@@ -1,6 +1,10 @@
 # Wuduplz
 
-Visit the install.md file to get started.
+Request/respond based application.
+
+## Installation
+
+Visit the INSTALL.md file to get started.
 
 ## Project Description
 
@@ -10,6 +14,14 @@ Visit the install.md file to get started.
 
 ## Project Goals
 
+* few 
+* points
+* here
+
 ## Contributors
+
+* Person 1
+* Person 2
+* Person 3
 
 ## License
