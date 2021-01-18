@@ -18,7 +18,7 @@ import Fontisto from 'react-native-vector-icons/Fontisto'
 
 const Post = (props) => {
 	// state used to represent the pause/play feature
-	const [paused, setPaused] = useState(false);  
+	const [paused, setPaused] = useState(true);
 	const onPlayPausePress = () => {
 		setPaused(!paused);
 	};
@@ -63,6 +63,14 @@ const Post = (props) => {
 		<View style={styles.container}>
 			<TouchableWithoutFeedback onPress={onPlayPausePress}>
 				<View>
+					{paused && <FontAwesome style={{
+						zIndex: 999,
+						opacity: 1.0,
+						position: 'absolute',
+						alignSelf: 'center',
+						top:'43%',
+						left:'43%'
+					}} name={'play'} size={100} color="black" />}
 					<Video 
 						 source={{uri: post.videoUri}}
 						 style = {styles.video}
@@ -105,14 +113,23 @@ const Post = (props) => {
 
 
 							<View style={styles.songRow}>
-								<Entypo name={'note'} size={20} color='white'/>
-								<Text style={styles.songName}>{post.song}</Text>
+								<Entypo name={'users'} size={20} color='white'/>
+								<Text style={styles.requestedBy}>Requested by <Text style={{textDecorationLine:'underline'}}>{post.requestedBy}</Text></Text>
 							</View>
 						</View>
 
-							<Image style={styles.songImage} 
-								   source={{uri: post.songImage}}
-								/>	
+						<View style={styles.downloadRow}>
+							{/*<View>*/}
+							{/*	<Text style={{color: 'white'}}> Public </Text>*/}
+							{/*</View>*/}
+							{/* TODO:
+							 	depending on video privacy, swap icons
+							 */}
+							<Image style={styles.downloadImage}
+								   source={{uri: 'https://freeiconshop.com/wp-content/uploads/edd/download-flat.png'}}
+								// link to download the video
+							/>
+						</View>
 
 
 					</View>

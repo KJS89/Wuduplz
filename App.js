@@ -4,9 +4,7 @@ import React, { Component } from 'react'
 import {
   SafeAreaView,
   StatusBar,
-} from 'react-native'
-import AntDesign from 'react-native-vector-icons/AntDesign'
-
+} from 'react-native';
 
 import Home from './src/screens/Home';
 import Navigation from './src/navigation';

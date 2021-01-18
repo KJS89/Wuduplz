@@ -38,17 +38,21 @@ const styles = StyleSheet.create({
 		flexDirection: 'row',
 		alignItems: 'center',
 	},
-	songName: {
-		color: '#fff',
-		fontSize: 16,
-		marginLeft: 5,
+	downloadRow: {
+		flexDirection:'row',
+		alignItems: 'center'
 	},
-	songImage: {
+	downloadImage: {
 		width: 40,
 		height: 40,
 		borderRadius: 25,
-		borderWidth: 4,
-		borderColor: '#4c4c4c'
+		borderWidth: 2,
+		borderColor: 'white'
+	},
+	requestedBy: {
+		color: '#fff',
+		fontSize: 16,
+		marginLeft: 5,
 	},
 	// right container
 	rightContainer: {

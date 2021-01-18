@@ -1,5 +1,5 @@
 import React from 'react';
-import { Dimensions } from 'react-native';
+import { Dimensions, Image } from 'react-native';
 import { Circle, Rect } from "react-native-svg";
 import ContentLoader from 'rn-content-loader';
 

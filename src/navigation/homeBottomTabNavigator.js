@@ -1,5 +1,5 @@
 import React from 'react';
-import { Image, Text } from 'react-native';
+import { Image, TextInput } from 'react-native';
 import {createBottomTabNavigator} from '@react-navigation/bottom-tabs';
 
 import Home from '../screens/Home';
@@ -29,6 +29,7 @@ const HomeBottomTabNavigator = () => {
 				borderTopWidth: 0,
 			},
 			activeTintColor: 'white',
+			keyboardHidesTabBar: true,
 		}}>
 			<Tab.Screen 
 				name={'Home'} 
@@ -46,22 +47,11 @@ const HomeBottomTabNavigator = () => {
 					tabBarIcon: ({color}) => (
 						<AntDesign name={'search1'} size={24} color={color} />
 					),
-					tabBarHeader: () => <TextInput
-						placeholder="Search"
-						placeHolderTextColor="#333"
-						style={{
-							flex: 1,
-							marginBottom: 5,
-							paddingHorizontal: 15,
-							alignSelf: 'stretch',
-							width: Dimensions.get("window").width - 50,
-							backgroundColor: '#F5F5F5'
-						}} />,
 					tabLeft: () => null,
 					tabRight: () => null,
 				}} />
 			<Tab.Screen 
-				name='Upload' 
+				name='Upload'
 				component={AddRequest} 
 				options={{
 					tabBarIcon: ({}) => (
