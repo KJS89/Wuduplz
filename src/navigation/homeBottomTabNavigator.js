@@ -6,7 +6,7 @@ import Home from '../screens/Home';
 import Search from '../screens/Search';
 import Profile from '../screens/Profile';
 import Inbox from '../screens/Inbox';
-import Upload from '../screens/Upload';
+import AddRequest from '../screens/Upload';
 
 import Entypo from 'react-native-vector-icons/Entypo'
 import AntDesign from 'react-native-vector-icons/AntDesign'
@@ -14,6 +14,8 @@ import AntDesign from 'react-native-vector-icons/AntDesign'
 import plusIcon from '../assets/images/plus-icon.png'
 
 const Tab = createBottomTabNavigator();
+
+
 
 
 const HomeBottomTabNavigator = () => {
@@ -43,12 +45,24 @@ const HomeBottomTabNavigator = () => {
 				options={{
 					tabBarIcon: ({color}) => (
 						<AntDesign name={'search1'} size={24} color={color} />
-					)
-				}}
-			/>
+					),
+					tabBarHeader: () => <TextInput
+						placeholder="Search"
+						placeHolderTextColor="#333"
+						style={{
+							flex: 1,
+							marginBottom: 5,
+							paddingHorizontal: 15,
+							alignSelf: 'stretch',
+							width: Dimensions.get("window").width - 50,
+							backgroundColor: '#F5F5F5'
+						}} />,
+					tabLeft: () => null,
+					tabRight: () => null,
+				}} />
 			<Tab.Screen 
 				name='Upload' 
-				component={Upload} 
+				component={AddRequest} 
 				options={{
 					tabBarIcon: ({}) => (
 						<Image 
@@ -60,7 +74,7 @@ const HomeBottomTabNavigator = () => {
 				}}
 			/>
 			<Tab.Screen 
-				name='Inbox' 
+				name='Requests' 
 				component={Inbox} 
 				options={{
 					tabBarIcon: ({color}) => (

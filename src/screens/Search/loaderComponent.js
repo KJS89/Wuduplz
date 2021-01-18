@@ -21,6 +21,7 @@ const LoaderComponent = props => (
     <Rect x="0" y="100" rx="3" ry="3" width="250" height="6.4" />
     <Rect x="0" y="120" rx="3" ry="3" width="250" height="6.4" />
     <Circle cx="30" cy="30" r="30" />
+    <Image source={{uri:''}} />
 
   </ContentLoader>
 )
