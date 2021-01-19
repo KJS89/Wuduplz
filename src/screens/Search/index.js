@@ -6,13 +6,10 @@ import {
     StyleSheet,
     Text,
     TextInput,
-    Dimensions,
+    TouchableHighlight,
 } from 'react-native';
-import Video from 'react-native-video';
 import {Container} from './styles';
 import FontAwesome from 'react-native-vector-icons/FontAwesome';
-
-// import BottomTabNavigator from '../../navigation/homeBottomTabNavigator';
 
 import randomize from '../../functions/randomize';
 
@@ -98,15 +95,25 @@ const Search = ({ navigation }) => {
                         }}>
                             <ScrollView horizontal showsHorizontalScrollIndicator={false}>
                                 {randomize(videos).map((video, key) => (
-                                    <Image
-                                        key={key}
-                                        source={{uri:video.image}}
-                                        style={{
-                                            width: 150,
-                                            height: 200,
-                                            marginHorizontal: 2,
-                                        }}
-                                    />
+                                    <TouchableHighlight key={key} onPress={() => {
+                                        navigation.push("Root", {
+                                            screen: 'Player',
+                                            params: {
+                                                itemId: key,
+                                                otherParams: 15,
+                                            }
+                                        })
+                                    }}>
+                                        <Image
+                                            key={key}
+                                            source={{uri:video.image}}
+                                            style={{
+                                                width: 150,
+                                                height: 200,
+                                                marginHorizontal: 2,
+                                            }}
+                                        />
+                                    </TouchableHighlight>
                                 ))}
                             </ScrollView>
                         </View>

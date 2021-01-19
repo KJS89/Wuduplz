@@ -70,11 +70,11 @@ const Post = (props) => {
 						alignSelf: 'center',
 						top:'43%',
 						left:'43%'
-					}} name={'play'} size={100} color="black" />}
-					<Video 
+					}} name={'play'} size={100} color="white" />}
+					<Video
 						 source={{uri: post.videoUri}}
 						 style = {styles.video}
-						 onError={(e) => console.log(e)}
+						 onError={(e) => console.log("from video: ", e)}
 						 resizeMode={'cover'}
 						 repeat={true}
 						 paused={paused}

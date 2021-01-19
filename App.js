@@ -6,7 +6,6 @@ import {
   StatusBar,
 } from 'react-native';
 
-import Home from './src/screens/Home';
 import Navigation from './src/navigation';
 
 const App: () => React$Node = () => {
