@@ -119,16 +119,7 @@ const Post = (props) => {
 						</View>
 
 						<View style={styles.downloadRow}>
-							{/*<View>*/}
-							{/*	<Text style={{color: 'white'}}> Public </Text>*/}
-							{/*</View>*/}
-							{/* TODO:
-							 	depending on video privacy, swap icons
-							 */}
-							<Image style={styles.downloadImage}
-								   source={{uri: 'https://freeiconshop.com/wp-content/uploads/edd/download-flat.png'}}
-								// link to download the video
-							/>
+							{post.private ? <Image style={styles.downloadImage} source={{ uri: 'https://freeiconshop.com/wp-content/uploads/edd/download-flat.png' }}/> : <Image style={styles.downloadImage} source={{ uri: 'https://www.clipartmax.com/png/middle/156-1566079_red-lock-icon-png.png'}}/>}
 						</View>
 
 

@@ -39,7 +39,7 @@ const styles = StyleSheet.create({
 		alignItems: 'center',
 	},
 	downloadRow: {
-		flexDirection:'row',
+		flexDirection: 'row',
 		alignItems: 'center'
 	},
 	downloadImage: {
