@@ -1,6 +1,6 @@
 # Wuduplz
 
-Request/respond based application.
+Request/respond based video application.
 
 ## Installation
 
@@ -13,31 +13,25 @@ Request/respond based application.
 3. `src` : react-native front-end
 4. `prototype` : contains front-end designs
 
-## Project Description
-
-* few 
-* points
-* here
-
-## Project Goals
-
-* few 
-* points
-* here
-
 ## Media
 
-* [Demo](https://drive.google.com/file/d/1D1QZPNT3E_f1Rjtj-mr6PJ5NJXKs3kdT/view?usp=sharing)
-* Design 1
-* Design 2
-* Design 3
+* [Demo](https://drive.google.com/file/d/1Iq-nlYKKrBqMkU-2rnSO4isL-T_0lz7t/view?usp=sharing)
+
+## Product Owner
+
+* Woonsok Lee
 
 ## Contributors
 
-* Person 1
-* Person 2
-* Person 3
-
-## License
-
-Some set of license, not sure probably MIT?
+* Nick Pare
+* Yifei Wang
+* Yujian Hu
+* Ying Tan
+* Xingpen Wang
+* Ingrid Wang
+* Sneha G
+* Amit Nayak
+* Zhuoqun Pan
+* Muyi Yang
+* Xinhao Zhang
+* Oleksandr Hlovyak
