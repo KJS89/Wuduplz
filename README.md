@@ -6,11 +6,12 @@ Request/respond based application.
 
 * Visit the INSTALL.md file to get started with the frontend.
 
-## Project Structure
+## Important Directories
 
-1. `Server` folder : contains data about API and backend server
-2. `database` folder : mysql database
-3. `src` folder : react-native frontend
+1. `Server` : API and backend server
+2. `database` : mysql database
+3. `src` : react-native front-end
+4. `prototype` : contains front-end designs
 
 ## Project Description
 
