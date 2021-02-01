@@ -8,9 +8,9 @@ Request/respond based application.
 
 ## Project Structure
 
-1. Server folder : contains data about API and backend server
-2. database folder : mysql database
-3. src folder : react-native frontend
+1. `Server` folder : contains data about API and backend server
+2. `database` folder : mysql database
+3. `src` folder : react-native frontend
 
 ## Project Description
 
