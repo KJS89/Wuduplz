@@ -5,6 +5,10 @@ import {
 	TouchableWithoutFeedback, 
 	Image,
 	TouchableOpacity,
+    Modal,
+	TouchableHighlight,
+	KeyboardAvoidingView,
+	TextInput
 } from 'react-native';
 
 import Video from 'react-native-video';
@@ -26,6 +30,11 @@ const Post = (props) => {
 	// data of the post
 	const [post, setPost] = useState(props.post);
 
+	const [modal, setModal] = useState(false);
+	const setModalVisible = () => {
+		setModal(!modal);
+	};
+
 	// data to represent the like state
 	const [isLiked, setIsLiked] = useState(false);
 	const onLikePress = () => {
@@ -46,6 +55,7 @@ const Post = (props) => {
 			comments: post.comments + commentsToAdd
 		})
 		setIsCommented(!isCommented)
+		setModalVisible(!modal);
 	}
 
 	// data to represent the share state
@@ -61,6 +71,91 @@ const Post = (props) => {
 
 	return (
 		<View style={styles.container}>
+
+			{/*comment modal start*/}
+			<View style={styles.centeredView}>
+				<Modal
+					animationType={"slide"}
+					transparent={true}
+					visible={modal}
+				>
+					<View style={styles.centeredView}>
+						<View style={styles.modalView}>
+							{/*comment section start*/}
+							<View style={{flexDirection: 'row', marginBottom: 5}}>
+								<View style={{alignItems: 'center', marginLeft: 5, paddingTop: 10, width: 40}}>
+									<Image
+										resizeMode={'contain'}
+										style={{borderWidth: 1, borderColor: '#EEE', borderRadius: 10, width: 26, height: 26}}
+										source={{uri: 'https://influencermarketinghub.com/wiki/wp-content/uploads/2020/08/1657369265111046_c5_720x720.jpeg'}}
+									/>
+								</View>
+								<View style={{flex: 1, borderBottomWidth: 1, borderColor: '#EEE', padding: 3}}>
+									<Text>
+										<Text style={{fontWeight: 'bold', color: '#000', fontSize: 15}}>
+											@daviddobrik
+										</Text>
+										{' '}
+										<Text style={{fontSize: 15}}>wow what a nice video!</Text>
+									</Text>
+								</View>
+							</View>
+							{/*comment section end*/}
+
+							<View style={{flex: 1, justifyContent: 'flex-end'}}>
+								{/*keyboard input start*/}
+								<KeyboardAvoidingView behaviour={'position'}>
+									<View style={{
+										backgroundColor: '#FFF',
+										flexDirection: 'row',
+										// borderTopWidth: 1,
+										borderColor: '#EEE',
+										alignItems: 'center',
+										paddingLeft: 15,
+										flex: 1,
+										//marginTop: 300,
+										// /justifyContent: 'flex-end'
+									}}>
+										<TextInput
+											placeholder={'Add a comment...'}
+											keyboardType={'twitter'}
+											autoFocus={false}
+											//style={{flex: 1, height: 40, fontSize: 15}}
+										/>
+										<TouchableOpacity
+											style={{height: 40, paddingHorizontal: 20, alignItems: 'center', justifyContent: 'center'}}
+										>
+											<View style={{flexDirection: 'row'}}>
+												<Text style={{color: '#3F51B5', fontWeight: 'bold', textAlign: 'center'}}>Post</Text>
+											</View>
+										</TouchableOpacity>
+
+										<TouchableOpacity
+											style={{height: 40, paddingHorizontal: 1, alignItems: 'center', justifyContent: 'center'}}
+											onPress={() => {setModalVisible(false)}}
+										>
+											<View style={{flexDirection: 'row'}}>
+												<Text style={{color: '#3F51B5', fontWeight: 'bold', textAlign: 'center'}}>Close</Text>
+											</View>
+										</TouchableOpacity>
+									</View>
+								</KeyboardAvoidingView>
+							</View>
+
+							{/*close button section*/}
+							{/*<View style={{flexDirection: 'row' }}>*/}
+							{/*	<TouchableHighlight*/}
+							{/*		style={{...styles.openButton, backgroundColor: "#2196F3"}}*/}
+							{/*		onPress={setModalVisible}*/}
+							{/*	>*/}
+							{/*		<Text style={styles.textStyle}>Close</Text>*/}
+							{/*	</TouchableHighlight>*/}
+							{/*</View>*/}
+						</View>
+					</View>
+				</Modal>
+			</View>
+
 			<TouchableWithoutFeedback onPress={onPlayPausePress}>
 				<View>
 					{paused && <FontAwesome style={{
