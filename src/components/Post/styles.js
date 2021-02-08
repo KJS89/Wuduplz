@@ -88,10 +88,10 @@ const styles = StyleSheet.create({
 		//margin: 20,
 		backgroundColor: "white",
 		borderRadius: 10,
-		padding: 35,
+		padding: 15,
 		height: '65%',
-		width: Dimensions.get("window").width - 15,
-		alignItems: "center",
+		width: Dimensions.get("window").width - 5,
+		//alignItems: "center",
 		shadowColor: "#000",
 		shadowOffset: {
 			width: 0,

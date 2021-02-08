@@ -6,9 +6,7 @@ import {
 	Image,
 	TouchableOpacity,
     Modal,
-	TouchableHighlight,
-	KeyboardAvoidingView,
-	TextInput
+	ScrollView,
 } from 'react-native';
 
 import Video from 'react-native-video';
@@ -18,6 +16,8 @@ import Entypo from 'react-native-vector-icons/Entypo'
 import AntDesign from 'react-native-vector-icons/AntDesign'
 import FontAwesome from 'react-native-vector-icons/FontAwesome'
 import Fontisto from 'react-native-vector-icons/Fontisto'
+import Comment from "../Comment";
+import Input from "../Comment/input";
 
 
 const Post = (props) => {
@@ -71,7 +71,6 @@ const Post = (props) => {
 
 	return (
 		<View style={styles.container}>
-
 			{/*comment modal start*/}
 			<View style={styles.centeredView}>
 				<Modal
@@ -81,80 +80,25 @@ const Post = (props) => {
 				>
 					<View style={styles.centeredView}>
 						<View style={styles.modalView}>
-							{/*comment section start*/}
-							<View style={{flexDirection: 'row', marginBottom: 5}}>
-								<View style={{alignItems: 'center', marginLeft: 5, paddingTop: 10, width: 40}}>
-									<Image
-										resizeMode={'contain'}
-										style={{borderWidth: 1, borderColor: '#EEE', borderRadius: 10, width: 26, height: 26}}
-										source={{uri: 'https://influencermarketinghub.com/wiki/wp-content/uploads/2020/08/1657369265111046_c5_720x720.jpeg'}}
-									/>
-								</View>
-								<View style={{flex: 1, borderBottomWidth: 1, borderColor: '#EEE', padding: 3}}>
-									<Text>
-										<Text style={{fontWeight: 'bold', color: '#000', fontSize: 15}}>
-											@daviddobrik
-										</Text>
-										{' '}
-										<Text style={{fontSize: 15}}>wow what a nice video!</Text>
-									</Text>
-								</View>
-							</View>
-							{/*comment section end*/}
+							<Text style={{fontWeight: 'bold', padding: 5, fontSize: 20}}>Comments</Text>
+							<View style={{flex: 1, backgroundColor: '#FFF'}}>
+								<ScrollView
+								>
+									<Comment username={'daviddobrik'} content={'nice video'} />
+									<Comment username={'stevenseagull'} content={'meh i could lift more'}/>
+									<Comment username={'bradpitt'} content={'its alright but bad music'}/>
+									<Comment username={'johnatthan'} content={'this is not what i asked for !'}/>
+								</ScrollView>
 
-							<View style={{flex: 1, justifyContent: 'flex-end'}}>
 								{/*keyboard input start*/}
-								<KeyboardAvoidingView behaviour={'position'}>
-									<View style={{
-										backgroundColor: '#FFF',
-										flexDirection: 'row',
-										// borderTopWidth: 1,
-										borderColor: '#EEE',
-										alignItems: 'center',
-										paddingLeft: 15,
-										flex: 1,
-										//marginTop: 300,
-										// /justifyContent: 'flex-end'
-									}}>
-										<TextInput
-											placeholder={'Add a comment...'}
-											keyboardType={'twitter'}
-											autoFocus={false}
-											//style={{flex: 1, height: 40, fontSize: 15}}
-										/>
-										<TouchableOpacity
-											style={{height: 40, paddingHorizontal: 20, alignItems: 'center', justifyContent: 'center'}}
-										>
-											<View style={{flexDirection: 'row'}}>
-												<Text style={{color: '#3F51B5', fontWeight: 'bold', textAlign: 'center'}}>Post</Text>
-											</View>
-										</TouchableOpacity>
-
-										<TouchableOpacity
-											style={{height: 40, paddingHorizontal: 1, alignItems: 'center', justifyContent: 'center'}}
-											onPress={() => {setModalVisible(false)}}
-										>
-											<View style={{flexDirection: 'row'}}>
-												<Text style={{color: '#3F51B5', fontWeight: 'bold', textAlign: 'center'}}>Close</Text>
-											</View>
-										</TouchableOpacity>
-									</View>
-								</KeyboardAvoidingView>
+								<Input closeModal={setModalVisible}/>
+								{/*keyboard input end */}
 							</View>
-
-							{/*close button section*/}
-							{/*<View style={{flexDirection: 'row' }}>*/}
-							{/*	<TouchableHighlight*/}
-							{/*		style={{...styles.openButton, backgroundColor: "#2196F3"}}*/}
-							{/*		onPress={setModalVisible}*/}
-							{/*	>*/}
-							{/*		<Text style={styles.textStyle}>Close</Text>*/}
-							{/*	</TouchableHighlight>*/}
-							{/*</View>*/}
 						</View>
 					</View>
 				</Modal>
 			</View>
+			{/*comment modal end*/}
 
 			<TouchableWithoutFeedback onPress={onPlayPausePress}>
 				<View>
@@ -173,6 +117,7 @@ const Post = (props) => {
 						 resizeMode={'cover'}
 						 repeat={true}
 						 paused={paused}
+						 controls={false}
 					 />
 
 				<View style={styles.uiContainer}>

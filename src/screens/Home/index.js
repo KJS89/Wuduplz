@@ -13,9 +13,8 @@ const Home = (props) => {
 			<FlatList
 				data={posts}
 				renderItem={({item}) => <Post post={item}/>}
-				extraData={posts}
 				showsVerticalScrollIndicator={false}
-				snapToInterval={Dimensions.get('window').height - 73} // scale the image according to screen height
+				snapToInterval={Dimensions.get('window').height - 72 } // scale the image according to screen height
 				snapToAlignment={"start"}
 				decelerationRate={"fast"}
 			/>

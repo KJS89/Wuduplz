@@ -91,7 +91,7 @@ const Search = ({ navigation }) => {
                 <TextInput
                     placeholder="Search"
                     placeHolderTextColor="#333"
-                    // value={search}
+                    value={search}
                     style={{
                         flex: 1,
                         marginTop: 10,
@@ -101,8 +101,9 @@ const Search = ({ navigation }) => {
                         width: StyleSheet.hairLineWidth,
                         backgroundColor: '#F5F5F5'
                     }}
+                    onChangeText={(text) => setSearch(text)}
                     onSubmitEditing={() => {
-                        navigation.push("Results");
+                        navigation.push("Results", {query: search});
                     }}
                 />
                 {categories.map((categorie, k) => (
