@@ -1,6 +1,10 @@
 # Wuduplz
 
-Request/respond based video application.
+  Request/respond based video application.
+
+<p align="center">
+  <img src="https://drive.google.com/uc?export=view&id=1lj72YtAmgJYGQlgUblYM_NH_ZYuodo73" alt="media" width="300"/>
+</p>
 
 ## Installation
 
