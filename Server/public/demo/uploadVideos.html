@@ -1,0 +1,33 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <script src="../assets/vendors/nprogress/nprogress.js"></script>
+    <script src="../assets/vendors/jquery/jquery.js"></script>
+    <title>Document</title>
+</head>
+<body>
+    <form id='form'>
+    <input name='avatar' type='file' id='avatar' value='upload video'/>
+    </form>
+    <script type='text/javascript'>
+        $('#avatar').on('change',function(){
+            var formdata = new FormData()
+            formdata.append('avatar',this.files[0])
+            
+            $.ajax({
+                type:'post',
+                url:'/front-end/login/uploadVideos',
+                data:formdata,
+                contentType:false,
+                processData:false,
+                success:function(response){
+                    console.log(response)
+                }
+            })
+        })
+    </script>
+</body>
+</html>

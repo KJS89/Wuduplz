@@ -1,0 +1,60 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <script src="../assets/vendors/nprogress/nprogress.js"></script>
+    <script src="../assets/vendors/jquery/jquery.js"></script>
+    <title>Document</title>
+</head>
+<body>
+    <p><input name='ProfilePhoto' type='file' value="choose a file" id = "file"/></p>
+    <input type='button' value = 'send' id='btn'/>
+    
+    <script>
+        // var d = new Date()
+        // var date = d.getFullYear() + '-' + d.getMonth() + '-' + d.getDay()
+        // var islike = true
+        $("#file").on('change',function(){
+        var formData = new FormData();
+        formData.append('avatar',this.files[0])
+        console.log(this.files)
+
+        $.ajax({
+            type:'post',
+            url:'/upload',
+            data:formData,
+            //processData:false,
+            contentType:'multipart/form-data',
+            success:function(response){
+               console.log(response)
+               //$('#hiddenAvatar').val(response.path.replaceAll('\\','||'))
+            }
+
+        })
+    })
+
+        $('#btn').on('click',function(){
+            //islike = !islike
+            var form = new FormData()
+            form.append('file',{
+                uri:"C:\\Users\\Administrator\\Documents\\Tencent Files\\425786225\\FileRecv\\MobileFile\\1596723570178.jpeg",  
+                type:'image/jpeg',
+                name:'1596723570178.jpeg'
+            })
+            $.ajax({
+                type:'post',
+                url:'http://localhost:3000//upload',
+                processData:false,
+                contentType:'multipart/form-data; boundary=----WebKitFormBoundaryzlBE506b5kpdeTiw',
+                data:JSON.stringify(form),
+                success:function(response){
+                    alert('success!')
+                    console.log(response)
+                }
+            })
+        })
+    </script>
+</body>
+</html>
