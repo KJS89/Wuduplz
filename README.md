@@ -3,7 +3,7 @@
   Request/respond based video application.
 
 <p align="center">
-  <img src="https://drive.google.com/uc?export=view&id=1lj72YtAmgJYGQlgUblYM_NH_ZYuodo73" alt="media" width="300"/>
+  <img src="https://drive.google.com/uc?export=view&id=1lj72YtAmgJYGQlgUblYM_NH_ZYuodo73" alt="media" width="200"/>
 </p>
 
 ## Installation
@@ -14,8 +14,14 @@
 
 1. `Server` : API and backend server
 2. `database` : mysql database
-3. `src` : react-native front-end
-4. `prototype` : contains front-end designs
+3. `src` : react-native front-end (final product)
+
+## In progress directories
+
+*  `prototype` : contains front-end designs
+* `TestProject` : react-native front-end testing pages (Ingrid & Johanna's work)
+*  `Web mining` : data for geographic locations
+*  `icon` : folder contains .svg icons (probably won't be needed)
 
 ## Media
 
