@@ -1,5 +1,5 @@
 import React from 'react';
-import { Image, TextInput, Button, Title } from 'react-native';
+import { Image, TextInput, Button, Title, Text } from 'react-native';
 import {createBottomTabNavigator} from '@react-navigation/bottom-tabs';
 import FontAwesome from 'react-native-vector-icons/FontAwesome'
 
@@ -32,7 +32,7 @@ const BottomTabNavigator = () => {
 			animationEnabled: true,
 		}}>
 			<Tab.Screen
-				name={'Player'}
+				name={'Video'}
 				component={Home}
 				options={{
 					tabBarIcon: ({color}) => (
@@ -70,7 +70,7 @@ const BottomTabNavigator = () => {
 				options={{
 					tabBarIcon: ({color}) => (
 						<Entypo name={'message'} size={24} color={color} />
-					)
+					),
 				}}
 			/>
 			<Tab.Screen

@@ -165,8 +165,8 @@ const Search = ({ navigation }) => {
                                             key={key}
                                             source={{uri:video.image}}
                                             style={{
-                                                width: 120,
-                                                height: 150,
+                                                width: 145,
+                                                height: 200,
                                                 marginHorizontal: 1,
                                                 marginBottom: 1
                                             }}>

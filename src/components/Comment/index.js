@@ -1,8 +1,10 @@
 import React, {useState} from 'react';
-import {Image, Text, View} from "react-native";
+import {Image, Text, View, Dimensions} from "react-native";
 
 
 const Comment = (props) => {
+    const {width, height, scale} = Dimensions.get("window");
+
     return (
         <View style={{flexDirection: 'row'}}>
             <View style={{alignItems: 'center', marginLeft: 5, paddingTop: 10, width: 40}}>
