@@ -1,6 +1,8 @@
 const express = require('express')
 const promisify = require('util').promisify
 const connection = require('../../../../mysql/actions/connection')
+var os = require('os');
+var networkInterfaces = os.networkInterfaces();
 
 const router = express.Router()
 
@@ -82,13 +84,13 @@ router.get('/:userid',async(req,res)=>{
             let comments = await Query(sqlComments)
 
             var video = videos[0]
-
+    
 
             video['creator'] = users[0]
             video['likes']= likes[0]['likes']
             video['comments']=comments[0]['comments']
-            video['videoLocation'] = video['videoLocation'].split('|').join('\\')
-            video['creator']['imageUri'] = video['creator']['imageUri'].split('|').join('\\')
+            video['videoLocation'] = networkInterfaces['WLAN'][1]['address']+':3000' + video['videoLocation'].split('|').join('//')
+            video['creator']['imageUri'] = video['creator']['imageUri'].split('|').join('//')
 
           
 
@@ -103,7 +105,7 @@ router.get('/:userid',async(req,res)=>{
     }
 }
 
-    console.log(result)
+    console.log(Object.keys(result))
 
     res.send(result)
 
