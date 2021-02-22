@@ -1,7 +1,8 @@
 const express = require('express')
 const promisify = require('util').promisify
 const connection = require('../../../../mysql/actions/connection')
-
+var os = require('os');
+var networkInterfaces = os.networkInterfaces();
 const home = express.Router()
 
 
@@ -45,8 +46,8 @@ home.get('/:videoId',async (req,res)=>{
     result['user'] = user[0]
     result['likes']= likes[0]['likes']
     result['comments']=comments[0]['comments']
-    result['videoUri'] = result['videoUri'].split('|').join('//')
-    result['user']['imageUri'] = result['user']['imageUri'].split('|').join('\\')
+    result['videoUri'] = 'http://'+networkInterfaces['WLAN'][1]['address']+':3000'+result['videoUri'].split('|').join('//')
+    result['user']['imageUri'] ='http://'+ networkInterfaces['WLAN'][1]['address']+':3000'+result['user']['imageUri'].split('|').join('//')
     //console.log(result)
     res.send(result)   
 
