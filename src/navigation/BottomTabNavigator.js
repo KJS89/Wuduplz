@@ -6,14 +6,15 @@ import FontAwesome from 'react-native-vector-icons/FontAwesome'
 import Home from '../screens/Home';
 import Search from '../screens/Search';
 import Profile from '../screens/Profile';
-import Inbox from '../screens/Inbox';
-
+import Requests from '../screens/Requests';
 import AddRequest from '../screens/Upload';
 
 import Entypo from 'react-native-vector-icons/Entypo'
 import AntDesign from 'react-native-vector-icons/AntDesign'
 
 import plusIcon from '../assets/images/plus-icon.png'
+import Responses from "../screens/Requests/Responses";
+import Results from "../screens/Search/Results";
 
 const Tab = createBottomTabNavigator();
 
@@ -39,7 +40,7 @@ const BottomTabNavigator = () => {
 						<Entypo name={'video'} size={24} color={color} />
 					)
 				}}
-				initialParams={{itemId: 15}}
+				initialParams={{itemId: 15, otherParams: 26}}
 			/>
 			<Tab.Screen
 				name='Explore'
@@ -50,7 +51,9 @@ const BottomTabNavigator = () => {
 					),
 					tabLeft: () => null,
 					tabRight: () => null,
-				}} />
+				}}
+				initialParams={{query: ''}}
+			/>
 			<Tab.Screen
 				name='Upload'
 				component={AddRequest}
@@ -66,7 +69,7 @@ const BottomTabNavigator = () => {
 			/>
 			<Tab.Screen
 				name='Requests'
-				component={Inbox}
+				component={Requests}
 				options={{
 					tabBarIcon: ({color}) => (
 						<Entypo name={'message'} size={24} color={color} />
@@ -82,6 +85,21 @@ const BottomTabNavigator = () => {
 					)
 				}}
 				/>
+			<Tab.Screen
+				name='Responses'
+				component={Responses}
+				options={{
+					tabBarButton: () => null
+				}}
+			/>
+			<Tab.Screen
+				name='Results'
+				component={Results}
+				options={{
+					tabBarButton: () => null
+				}}
+				initialParams={{query: ''}}
+			/>
 		</Tab.Navigator>
 	);
 }

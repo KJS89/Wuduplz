@@ -17,7 +17,7 @@ export default [
 },
 {
 	id: '2',
-	videoUri: 'http://techslides.com/demos/samples/sample.mp4',
+	videoUri: 'http://techslides.com/demos/samples/sample.webm',
 	user: {
 		id: 'u1',
 		username: '@gladiator',
@@ -31,19 +31,19 @@ export default [
 	private: false,
 	requestId: 2,
 },
-{
-	id: '3',
-	videoUri: 'http://techslides.com/demos/samples/sample.webm',
-	user: {
-		id: 'u1',
-		username: '@pompei',
-		imageUri: 'https://influencermarketinghub.com/wiki/wp-content/uploads/2020/08/1657369265111046_c5_720x720.jpeg',
-	},
-	description: 'only seeing it third time',
-	requestedBy: 'CasperTheGhost',
-	likes: 31,
-	comments: 12,
-	shares: 3,
-	private: false,
-},
+// {
+// 	id: '3',
+// 	videoUri: require('../Server/update/public/videos/upload_19d2fe37eb214a5521147943be8a971a.mp4'),
+// 	user: {
+// 		id: 'u1',
+// 		username: '@pompei',
+// 		imageUri: 'https://influencermarketinghub.com/wiki/wp-content/uploads/2020/08/1657369265111046_c5_720x720.jpeg',
+// 	},
+// 	description: 'only seeing it third time',
+// 	requestedBy: 'CasperTheGhost',
+// 	likes: 31,
+// 	comments: 12,
+// 	shares: 3,
+// 	private: false,
+// },
 ];

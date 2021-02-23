@@ -6,6 +6,7 @@ import {Container} from "./styles";
 
 const Results = ({route, navigation}) => {
     const [search, setSearch] = useState(route.params.query);
+    console.log(route.params.query);
 
     const videos = [
         {url: "https://d8vywknz0hvjw.cloudfront.net/fitenium-media-prod/videos/45fee890-a74f-11ea-8725-311975ea9616/proccessed_720.mp4",
@@ -56,7 +57,7 @@ const Results = ({route, navigation}) => {
                     }}
                     onChangeText={(text) => setSearch(text)}
                     onSubmitEditing={() => {
-                        navigation.push("Results", {query: search});
+                        // request search api again
                     }}
                 />
                     <View  style={{
@@ -116,13 +117,11 @@ const Results = ({route, navigation}) => {
                                 }}>
                                     {randomize(videos).map((video, key) => (
                                         <TouchableHighlight key={key} onPress={() => {
-                                            navigation.push("Root", {
-                                                screen: 'Player',
-                                                params: {
-                                                    itemId: key,
-                                                    otherParams: 15,
+                                            navigation.navigate("Video", {
+                                                    itemId: 'from Results',
+                                                    otherParams: key,
                                                 }
-                                            })
+                                            )
                                         }}>
                                             <ImageBackground
                                                 key={key}

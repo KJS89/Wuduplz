@@ -138,9 +138,14 @@ const Post = (props) => {
 							<Text style={styles.statsLabel}>{post.comments}</Text>
 						</TouchableOpacity>
 
-						<TouchableOpacity style={styles.iconContainer} onPress={onSharePress}>
-							<Fontisto name={'share-a'} size={25} color={isShared ? 'lime' : 'white'} />
+						<TouchableOpacity style={styles.iconContainer}>
+							<FontAwesome name={'eye'} size={25} color={'white'} />
 							<Text style={styles.statsLabel}>{post.shares}</Text>
+						</TouchableOpacity>
+
+						<TouchableOpacity style={styles.iconContainer}>
+							<Fontisto name={post.private ? 'download' : 'locked' } size={25} color={post.private ? 'white' : 'pink'} />
+							<Text style={styles.statsLabel}></Text>
 						</TouchableOpacity>
 
 					</View>
@@ -150,18 +155,11 @@ const Post = (props) => {
 							<Text style={styles.handle}>{post.user.username}</Text>
 							<Text style={styles.description}>{post.description}</Text>
 
-
-
 							<View style={styles.songRow}>
 								<Entypo name={'users'} size={20} color='white'/>
 								<Text style={styles.requestedBy}>Requested by <Text style={{textDecorationLine:'underline'}}>{post.requestedBy}</Text></Text>
 							</View>
 						</View>
-
-						<View style={styles.downloadRow}>
-							{post.private ? <Image style={styles.downloadImage} source={{ uri: 'https://freeiconshop.com/wp-content/uploads/edd/download-flat.png' }}/> : <Image style={styles.downloadImage} source={{ uri: 'https://www.clipartmax.com/png/middle/156-1566079_red-lock-icon-png.png'}}/>}
-						</View>
-
 
 					</View>
 				</View>

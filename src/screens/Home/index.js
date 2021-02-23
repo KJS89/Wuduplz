@@ -5,9 +5,11 @@ import Post from '../../components/Post';
 import posts from '../../../data/posts';
 
 
-const Home = (props) => {
-	const [post, setPost] = useState(props.route.params);
-	console.log(post.itemId);
+const Home = ({route, navigation}) => {
+	const [post, setPost] = useState(route.params.itemId);
+	console.log(route.params.itemId);
+	console.log(route.params.otherParams);
+
 	return (
 		<View>
 			<FlatList

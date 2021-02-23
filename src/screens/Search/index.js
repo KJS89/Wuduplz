@@ -13,8 +13,8 @@ import FontAwesome from 'react-native-vector-icons/FontAwesome';
 
 import randomize from '../../functions/randomize';
 
-const Search = ({ navigation }) => {
-    const [search, setSearch] = useState('');
+const Search = ({ route, navigation }) => {
+    const [search, setSearch] = useState(route.params.query);
 
     const videos = [
         {url: "https://d8vywknz0hvjw.cloudfront.net/fitenium-media-prod/videos/45fee890-a74f-11ea-8725-311975ea9616/proccessed_720.mp4",
@@ -103,7 +103,7 @@ const Search = ({ navigation }) => {
                     }}
                     onChangeText={(text) => setSearch(text)}
                     onSubmitEditing={() => {
-                        navigation.push("Results", {query: search});
+                        navigation.navigate("Results", {query: search});
                     }}
                 />
                 {categories.map((categorie, k) => (
@@ -153,13 +153,7 @@ const Search = ({ navigation }) => {
                             <ScrollView horizontal showsHorizontalScrollIndicator={false}>
                                 {randomize(videos).map((video, key) => (
                                     <TouchableHighlight key={key} onPress={() => {
-                                        navigation.push("Root", {
-                                            screen: 'Player',
-                                            params: {
-                                                itemId: key,
-                                                otherParams: 15,
-                                            }
-                                        })
+                                        navigation.navigate("Video", {itemId: 'from Search', otherParams: key})
                                     }}>
                                         <ImageBackground
                                             key={key}

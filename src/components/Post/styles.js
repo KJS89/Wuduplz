@@ -3,7 +3,7 @@ import {StyleSheet, Dimensions} from  'react-native';
 const styles = StyleSheet.create({
 	container: {
 		width: '100%',
-		height: Dimensions.get('window').height - 73 // scale the image according to your screen height,
+		height: Dimensions.get('window').height - 72 // scale the image according to your screen height,
 	},
 	video: {
 		position: 'absolute',
@@ -57,9 +57,10 @@ const styles = StyleSheet.create({
 	// right container
 	rightContainer: {
 		alignSelf: 'flex-end',
-		height: 250,
+		height: 290,
 		justifyContent: 'space-between',
 		marginRight: 2,
+		marginBottom: -100,
 	},
 	profilePicture: {
 		width: 50,

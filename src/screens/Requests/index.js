@@ -5,69 +5,61 @@ import FontAwesome5 from 'react-native-vector-icons/FontAwesome5';
 
 import { Container } from './styles';
 
-const Inbox = () => {
+const Requests = ({route, navigation}) => {
 	const requests = [
 		{
 			img: 'https://t1.ea.ltmcdn.com/en/images/1/7/1/20_white_cat_breeds_full_list_3171_orig.jpg',
-			user: 'Record your white cat',
-			message: '10 users have responded!',
-			live: true
+			requestMessage: 'Record your white cat',
+			responsesCount: '10 users have responded!',
+
 		},
 		{
 			img: 'https://www.tekportal.net/wp-content/uploads/2019/02/bench-press-8371.jpg',
-			user: 'Take a video of your bench press',
-			message: '3 users have responded!',
-			live: true
+			requestMessage: 'Take a video of your bench press',
+			responsesCount: '3 users have responded!',
 		},
 		{
 			img: 'https://upload.wikimedia.org/wikipedia/commons/thumb/4/47/New_york_times_square-terabass.jpg/300px-New_york_times_square-terabass.jpg',
-			user: 'Show me new york city mainstreet',
-			message: '4 users have responded!',
-			live: true
+			requestMessage: 'Show me new york city mainstreet',
+			responsesCount: '4 users have responded!',
 		},
 		{
 			img: 'https://ncc-website-2.s3.amazonaws.com/images/gatineauparkplan.jpg?mtime=20190207184314&focal=none',
-			user: 'Gatineau park hills',
-			message: '1 user has responded!',
-			live: true
+			requestMessage: 'Gatineau park hills',
+			responsesCount: '1 user has responded!',
 		},
 		{
 			img: 'https://static.wikia.nocookie.net/progressivepartyofnoobs/images/0/07/NA_icon_292x225-584x450.jpg/revision/latest?cb=20180204041337',
-			user: 'a cute baby',
-			message: 'No response so far...',
-			live: true
+			requestMessage: 'a cute baby',
+			responsesCount: 'No response so far...',
 		},
 		{
 			img: 'https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcQ4M9yEyd8PPmRAIUdTuFO0yqYJyTFHSOVorA&usqp=CAU',
-			user: 'how to cook eggs under 20 seconds',
-			message: '1 user has responded!',
-			live: true
+			requestMessage: 'how to cook eggs under 20 seconds',
+			responsesCount: '1 user has responded!',
 		},
 		{
 			img: 'https://t1.ea.ltmcdn.com/en/images/1/7/1/20_white_cat_breeds_full_list_3171_orig.jpg',
-			user: 'Record your white cat',
-			message: '10 users have responded!',
-			live: true
+			requestMessage: 'Record your white cat',
+			responsesCount: '10 users have responded!',
 		},
 		{
 			img: 'https://www.tekportal.net/wp-content/uploads/2019/02/bench-press-8371.jpg',
-			user: 'Take a video of your bench press',
-			message: '3 users have responded!',
-			live: true
+			requestMessage: 'Take a video of your bench press',
+			responsesCount: '3 users have responded!',
 		},
 		{
 			img: 'https://upload.wikimedia.org/wikipedia/commons/thumb/4/47/New_york_times_square-terabass.jpg/300px-New_york_times_square-terabass.jpg',
-			user: 'Show me new york city mainstreet',
-			message: '4 users have responded!',
-			live: true
+			requestMessage: 'Show me new york city mainstreet',
+			responsesCount: '4 users have responded!',
 		},
 	];
 
 	return (
 		<Container>
-			<ScrollView style={{paddingHorizontal: 10}}>
+			<ScrollView style={{paddingHorizontal: 10, margin: 5}}>
 				<View style={{marginTop: 15, marginBottom: 5}}>
-					<Text style={{color: 'black', fontSize: 15, fontWeight: 'bold', marginLeft: 7}}>Requests</Text>
+					<Text style={{color: 'black', fontSize: 15, fontWeight: 'bold', marginLeft: 7}}>Requests from you!</Text>
 				</View>
 
 				{requests.map((request, key) => (
@@ -77,24 +69,21 @@ const Inbox = () => {
 						alignItems: 'center',
 						justifyContent: 'space-between',
 						marginVertical: 10
-					}} key={key}>
+					}} onPress={() => {navigation.navigate("Responses", {'id': 1})}} key={key}>
 						<Image
-							resizeMode="contain"
 							style={{
 								width: 66,
 								height: 66,
-								borderRadius: 3,
+								borderRadius: 50,
 								borderColor: '#333',
-								borderWidth: StyleSheet.hairlineWidth
 							}}
 							source={{ uri: request.img }} />
 						<View style={{
 							width: '50%'
 						}}>
-							<Text style={{ fontWeight: 'bold' }}>{request.user}</Text>
-							<Text style={{ color: '#333' }}>{request.message}</Text>
+							<Text style={{ fontWeight: 'bold' }}>{request.requestMessage}</Text>
+							<Text style={{ color: '#333' }}>{request.responsesCount}</Text>
 						</View>
-						{request.live ? (
 							<View style={{
 								width: '23%',
 								alignItems: 'center',
@@ -102,18 +91,6 @@ const Inbox = () => {
 							}}>
 								<FontAwesome5 name={'chevron-right'} size={20} color="#E5E5E5" />
 							</View>
-						) : (
-							<View style={{
-								width: '25%',
-								padding: 5,
-								alignItems: 'center',
-								justifyContent: 'center',
-								borderWidth: 1,
-								borderColor: '#E5E5E5'
-							}}>
-								<Text style={{ color: '#010101' }}>Friends</Text>
-							</View>
-						)}
 					</TouchableOpacity>
 				))}
 
@@ -122,4 +99,4 @@ const Inbox = () => {
 	)
 }
 
-export default Inbox;
+export default Requests;
