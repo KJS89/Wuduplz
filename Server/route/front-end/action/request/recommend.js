@@ -21,15 +21,18 @@ router.get('/:userid',async(req,res)=>{
     let user = await Query(sqlUser)
 
     var keywords = []
+
+    //retrieve all the user preferences as keywords
     for(var i=0; i<user.length;i++){
         keywords.push(user[i].keywords)
     }
     //result[0].keywords = result[0].keywords.split('|')
 
+
     var videosId = {}
 
 
-    
+    //retrieve all videos matches the user preferences
     for(var i = 0; i<keywords.length;i++){
         let sqlVideo = `select keyword.KeywordContent as KeywordContent,video_keyword_relationship.VideoId as VideoId
                         from video_keyword_relationship
@@ -89,10 +92,18 @@ router.get('/:userid',async(req,res)=>{
             video['creator'] = users[0]
             video['likes']= likes[0]['likes']
             video['comments']=comments[0]['comments']
-            video['videoLocation'] = networkInterfaces['WLAN'][1]['address']+':3000' + video['videoLocation'].split('|').join('//')
-            video['creator']['imageUri'] = video['creator']['imageUri'].split('|').join('//')
+            var baseUri =[]
+            if(networkInterfaces['WLAN'][1]['family']=='IPv6'){
+               baseUri.push('http://[') 
+               baseUri.push(']:3000')
+            }else if(networkInterfaces['WLAN'][1]['family']=='IPv4'){
+                baseUri.push('http://') 
+                baseUri.push(':3000')
+            }
+            video['videoLocation'] = baseUri[0]+networkInterfaces['WLAN'][1]['address']+baseUri[1] + video['videoLocation'].split('|').join('//')
+            video['creator']['imageUri'] =baseUri[0]+networkInterfaces['WLAN'][1]['address']+baseUri[1] + video['creator']['imageUri'].split('|').join('//')
 
-          
+            
 
              if(i==0){
                  //console.log(key)
@@ -107,6 +118,7 @@ router.get('/:userid',async(req,res)=>{
 
     console.log(Object.keys(result))
 
+    console.log(result)
     res.send(result)
 
 

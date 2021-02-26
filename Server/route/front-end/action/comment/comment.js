@@ -6,7 +6,7 @@ module.exports = async ( req , res) => {
         console.log(params)
         var sql = `INSERT INTO comment (CommentId,CommentContent,CommentatorId,CommentDate,ThumberNumber,VideoId) 
         VALUES (uuid(),'${params.CommentContent}','${params.CommentatorId}',
-        ${params.CommentDate},${params.ThumberNumber},'58f5ffcf-716b-11eb-a09f-f0795907d9ec')`
+        ${params.CommentDate},${params.ThumberNumber},'${params.videoId}')`
         console.log(sql)
         connection.query(sql,(err,result)=>{
                 

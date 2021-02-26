@@ -20,7 +20,7 @@ home.get('/:videoId',async (req,res)=>{
 
     var user = await Query(sqlUser)
 
-    let sqlVideo = `select video.VideoId as VideoId,video.VideoPath as videoUri, video.VideoShortDescrtption as Description,video.VideoShares as shares
+    let sqlVideo = `select video.VideoId as VideoId,video.VideoPath as videoLocation, video.VideoShortDescrtption as description,video.VideoShares as shares
                     from video
                     where video.VideoId = '${id}'`
 
@@ -43,11 +43,21 @@ home.get('/:videoId',async (req,res)=>{
     var result = video[0]
 
 
-    result['user'] = user[0]
+    result['creator'] = user[0]
     result['likes']= likes[0]['likes']
     result['comments']=comments[0]['comments']
-    result['videoUri'] = 'http://'+networkInterfaces['WLAN'][1]['address']+':3000'+result['videoUri'].split('|').join('//')
-    result['user']['imageUri'] ='http://'+ networkInterfaces['WLAN'][1]['address']+':3000'+result['user']['imageUri'].split('|').join('//')
+    var baseUri =[]
+    if(networkInterfaces['WLAN'][1]['family']=='IPv6'){
+       baseUri.push('http://[') 
+       baseUri.push(']:3000')
+    }else if(networkInterfaces['WLAN'][1]['family']=='IPv4'){
+        baseUri.push('http://') 
+        baseUri.push(':3000')
+    }
+    console.log(result)
+    result['videoLocation'] = baseUri[0]+networkInterfaces['WLAN'][1]['address']+baseUri[1]+result['videoLocation'].split('|').join('//')
+    result['creator']['imageUri'] =baseUri[0]+ networkInterfaces['WLAN'][1]['address']+baseUri[1]+result['creator']['imageUri'].split('|').join('//')
+    console.log(result)
     //console.log(result)
     res.send(result)   
 

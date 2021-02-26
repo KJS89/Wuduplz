@@ -6,6 +6,7 @@ var networkInterfaces = os.networkInterfaces();
 
 module.exports = async(req,res)=>{
     var videoId = req.params.videoId
+    console.log(videoId)
     let sql = `select user.UserName as username, user.PhotoPath as photopath,comment.CommentContent as content,
                 comment.CommentDate as commentdate,comment.ThumberNumber as thumbers
                 from comment 
@@ -15,12 +16,12 @@ module.exports = async(req,res)=>{
     connection.query(sql,(err,result)=>{
    
         result.forEach((value,index)=>{
-           value['BaseUri']=networkInterfaces['WLAN'][1]['address']+':3000'
+           value['BaseUri']='['+networkInterfaces['WLAN'][1]['address']+']:3000'
            if(value['photopath']!=null)
-            value['photopath']=value['photopath'].split('|').join('//')
+            value['photopath']='http://'+value['BaseUri']+value['photopath'].split('|').join('//')
            //     console.log(item)
         })
-        //console.log(result)
+        console.log(result)
         res.send(result)
     })
     

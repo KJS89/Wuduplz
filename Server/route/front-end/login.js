@@ -7,7 +7,6 @@ const login = express.Router();
 const schema = require('../../mysql/schema')
 const action = new crud()
 const connection = require('../../mysql/actions/connection')
-const io = require('socket.io')
 
 login.use(session({
     name:'loginSession',
@@ -166,14 +165,7 @@ login.get('/fetch/:UserId',async (req,res)=>{
 
 
 
-login.get('/test',async (req,res)=>{
-    //var param = req.body;
-    //console.log(param)
-    var socket = io.connect('http://127.0.0.1:65432');
-    socket.emit('clientmessage', {
-        text: "hello"
-        });
-})
+
 
 
 
