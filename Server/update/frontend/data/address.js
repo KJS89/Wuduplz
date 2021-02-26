@@ -1,0 +1,1 @@
+export const SERVER_ADDRESS="http://[2607:9880:2538:46:40ac:988b:cf34:685a]:3000"
