@@ -1,0 +1,539 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<title>Video Mangement</title>
+	<style type="text/css">
+		* {
+			margin: 0;
+			padding: 0;
+		}
+
+		.head-stand {
+			height: calc(100vh/15);
+			width: calc(100vw);
+		}
+		.header {
+			float: left;
+			position: fixed;
+			height: calc(100vh/15);
+			width: calc(100vw);
+			box-shadow:0px 5px 8px #EFEDED;
+		}
+
+		.mainbody {
+			margin-top: 15px;
+		}
+
+		.sidebar {
+			float: left;
+			height: calc(100vh/15*14 - 15px);
+			width: 200px;
+			box-shadow:5px 0px 8px #EFEDED;
+			position: fixed;
+		}
+
+		.content {
+			float: right;
+			margin-left: 15px;
+			box-shadow:5px 0px 8px #EFEDED;
+			top: calc(100vh/15 + 15px);
+			width: calc(100vw - 215px);
+			height: calc(100vh/15*14 - 15px);
+			overflow: scroll;
+		}
+
+		
+
+		.logo {
+			float: left;
+			display: inline-block;
+			
+			height: calc(100vh/15 - 15px);
+			width: 250px;
+			margin-left: 25px;
+			margin-top: 8px;
+			font-size: 30px;
+		}
+
+		.logo img {
+			float: left;
+			height: calc(100vh/15 - 15px);
+			width: calc(100vh/15 - 15px);
+		}
+
+		.logo span {
+			float: left;
+			height: calc(100vh/15 - 15px);
+			margin-left: 10px;
+			line-height: calc(100vh/15 - 15px);
+			font-family: "Times New Roman",Georgia,Serif;
+			color: #98C6F2;
+			font-weight: bold;
+		}
+
+		.userpicture {
+			float: left;
+			margin-left: calc(55vw);
+			margin-top: 8px;
+			height: calc(100vh/15 - 15px); 
+			width: calc(100vh/15 - 15px);
+			border-radius: 200px;
+			 
+			background-image: url(image/userpicture.jpeg);
+			background-repeat: no-repeat;
+			background-size: contain;
+		}
+		.username {
+			float: left;
+			margin-left: 10px;
+			margin-top: 8px;
+			width: 100px;
+		}
+		.username span {
+			color: #707071;
+			font-size: 18px;
+			height: calc(100vh/15 - 15px);
+			line-height: calc(100vh/15 - 15px);
+			width: 100px;
+			margin-top: 5px;
+		}
+
+		.logout {
+			float: left;
+			margin-left: 10px;
+			margin-top: 10px;
+			width: calc(100vh/15 - 15px);
+		}
+
+		.logout button {
+			height: calc(100vh/15 - 20px);
+			width: calc(100vh/15 - 20px);
+			background-color: #fff;
+			background-image: url(image/icon_logout.svg);
+			background-size: contain;
+			border: none;
+		}
+
+		.sidebar ul {
+			list-style: none;
+			margin-top: 30px;
+		}
+
+		.vernier {
+			float: left;
+			height: 20px;
+			width: 6px;
+			
+		}
+
+		.sidebar span {
+			margin-left: 20px;
+		}
+
+		.sidebar ul a {
+			float: left;
+			width: 200px;
+			font-size: 18px;
+			color: #AEAEB2;
+			text-decoration: none;
+			margin-top: 10px;
+		}
+
+		.sidebar ul a:hover {
+			font-size: 18px;
+			font-weight: bold;
+			color: #707071;
+		}
+
+		.sidebar ul a:hover > .vernier {
+			background-color: #98C6F2;
+		}
+
+		.content_position {
+			margin-top: 80px;
+			margin-left: 80px;
+			margin-right: 80px;
+
+		}
+
+		.searchbox {
+			float: left;
+			border: 2px solid #98C6F2;
+			border-radius: 8px;
+		}
+
+		.tool{
+			width: calc(100vw - 375px);
+		}
+
+		.searchbox div {
+			float: left;
+			margin-left: 5px;
+			margin-top: 1px;
+			height: calc(100vh/15 - 20px);
+			width: calc(100vh/15 - 20px);
+			border-radius: 200px;
+			background-image: url(image/sousuo.svg);
+			background-color: #fff;
+			background-size: contain;
+			background-repeat: no-repeat;
+		}
+
+		.searchbox input {
+			float: left;
+			border-radius: 8px;
+			height: calc(100vh/15 - 20px);
+			width: calc(310px - 100vh/15);
+			border: none;
+			
+		}
+
+		.filter {
+			float: right;
+			height: calc(100vh/15 - 20px);
+			width: calc(310px - 100vh/15);
+			font-size: 18px;
+			font-weight: bold;
+		}
+		
+		.content-vd {
+			float: right;
+			margin-top: 5px;
+		}
+
+		.video {
+			float: right;
+			height: 200px;
+			width: calc(100vw - 375px);
+			border-bottom: 1px solid #EFEDED;
+		}
+
+		.video img {
+			float: left;
+			height: 180px;
+			width: calc(20vw);
+			border: none;
+			margin-top: 5px;
+			object-fit: cover;
+		}
+
+		.video-info {
+			float: left;
+			
+			width: calc(48vw);
+			height: 200px;
+		}
+
+		.operation {
+			float: left;
+			width: calc(32vw - 380px);
+			height: 200px;
+		}
+
+		.video_title {
+			color: #707071;
+			margin-left: 20px;
+			margin-top: 10px;
+			font-size: 24px;
+			font-weight: bold;
+		}
+
+		
+
+		.creator {
+			float: left;
+			height: 20px;
+			width: calc(12vw);
+			margin-left: 20px;
+		}
+
+		.creator div {
+			float: left;
+			height: 20px;
+			width: 20px;
+			background-image: url(image/nb.svg);
+			background-size: contain;
+			background-repeat: no-repeat;
+			background-color: #fff;
+		}
+
+		.creator span {
+			margin-left: 5px;
+			color: #9D9D9D;
+			font-size: 16px;
+		}
+
+		.thumb {
+			float: left;
+			height: 20px;
+			width: calc(8vw);
+			margin-left: 10px;
+		}
+
+		.thumb div {
+			float: left;
+			height: 20px;
+			width: 20px;
+			background-image: url(image/dianzan.svg);
+			background-size: contain;
+			background-repeat: no-repeat;
+			background-color: #fff;
+		}
+
+		.thumb span {
+			margin-left: 5px;
+			color: #9D9D9D;
+			font-size: 16px;
+		}
+
+		.date {
+			float: right;
+			height: 20px;
+			width: calc(16vw);
+			margin-right: 20px;
+		}
+
+		.date span {
+			margin-left: 5px;
+			color: #9D9D9D;
+			font-size: 16px;
+		}
+
+		.tag {
+			float: left;
+			margin-top: 5px;
+			margin-left: 20px;
+			height: 20px;
+			width: calc(48vw - 40px);
+		}
+
+		.taglogo {
+			float: left;
+			height: 20px;
+			width: 20px;
+			background-image: url(image/tag.svg);
+			background-size: contain;
+			background-repeat: no-repeat;
+			background-color: #fff;
+		}
+
+		.tagcontent {
+			float: left;
+			margin-top: 2px;
+			margin-left: 3px;
+			padding: 0 8px;
+			height: 16px;
+			border-radius: 2px;
+			background-color: #B3D5F5;
+			line-height: 16px;
+			font-size: 14px;
+			color: black;
+		}
+
+		.description {
+			float: left;
+			width: calc(48vw - 40px);
+			font-size: 18px;
+			margin-left: 20px;
+			margin-top: 5px;
+			color: #535151;
+		}
+
+		.operation_position {
+			height: 100px;
+			width: calc(32vw - 380px);
+
+		}
+
+		.modify {
+			margin-top: calc(260px - 16vw);
+			margin-left: calc(8vw - 85px);
+			height: calc(16vw - 210px);
+			width: calc(16vw - 210px);
+			background-image: url(image/xiugai.svg);
+			background-size: contain;
+			background-color: #fff;
+			background-repeat: no-repeat;
+			border: none;
+		}
+
+		.delete {
+			margin-top: calc(260px - 16vw);
+			margin-left: calc(8vw - 85px);
+			height: calc(16vw - 210px);
+			width: calc(16vw - 210px);
+			background-image: url(image/shanchu.svg);
+			background-size: contain;
+			background-color: #fff;
+			background-repeat: no-repeat;
+			border: none;
+		}
+
+		.page {
+			float: left;
+			width: calc(100vw - 375px);
+			height: calc(5vh);
+			margin-top: 5px;
+			margin-bottom: calc(15vh);
+		}
+
+		.previouspage {
+			float: left;
+			border-radius: 5px;
+			background-color: #98C6F2;
+			width: calc(12vh);
+			height: calc(5vh);
+			color: #fff;
+			line-height: calc(5vh);
+			font-size: 20px;
+			
+			text-align: center;
+			border: none;
+		}
+
+		.nextpage {
+			float: right;
+			border-radius: 5px;
+			background-color: #98C6F2;
+			width: calc(12vh);
+			height: calc(5vh);
+			color: #fff;
+			line-height: calc(5vh);
+			font-size: 20px;
+			
+			text-align: center;
+			border: none;
+		}
+
+	</style>
+</head>
+<body>
+	<div class="head-stand">
+		<div class="header">
+			<div class="logo">
+				<img src="image/LOGO-1.jpg">
+				<span>Wuduplz</span>
+			</div>
+			<div class="userpicture"></div>
+			<div class="username"><span>BalaBala</span></div>
+			<div class="logout">
+				<button></button>
+			</div>
+		</div>
+	</div>
+	
+	<div class="mainbody">
+		<div class="sidebar">
+			<ul>
+				<li><a href="#"><div class="vernier"></div><span>Video Management</span></a></li>
+				<li><a href="#"><div class="vernier"></div><span>User Management</span></a></li>
+				<li><a href="#"><div class="vernier"></div><span>... Management</span></a></li>
+			</ul>
+		</div>
+		<div class="content">
+			<div class="content_position">
+				<div class="tool">
+					<div class="searchbox">
+						<div></div>
+						<input type="text" name="search">
+					</div>
+					<!--<button class="filter">Filter</button>-->
+				</div>
+				<div class="content-vd">
+					<div class="video">
+						<img src="image/videopicture.jpg">
+						<div class="video-info">
+							<div class="video_title"><span>Video Title..................</span></div>
+							<div class="someinfo">
+								<div class="creator"><div></div><span>User001122334455</span></div>
+								<div class="thumb"><div></div><span>1000.0k</span></div>
+								<div class="date"><span>Create Date:</span><span>14:15:56 01/02/2021</span></div>
+							</div>
+							<div class="tag">
+								<div class="taglogo"></div>
+								<span class="tagcontent">Tag1</span>
+								<span class="tagcontent">Tag2</span>
+								<span class="tagcontent">Tag3</span>
+								<span class="tagcontent">Tag4</span>
+								<span class="tagcontent">Tag5</span>
+							</div>
+							<div><span class="description">A video description is a piece of metadata that helps YouTube understand the content of a video. Descriptions that are well optimized can lead to higher rankings in YouTube search.</span></div>
+						</div>
+						<div class="operation">
+							<div class="operation_position">
+								<button class="modify"></button>
+							</div>
+							<div class="operation_position">
+								<button class="delete"></button>
+							</div>
+						</div>
+					</div>
+					<div class="video">
+						<img src="image/videopicture.jpg">
+						<div class="video-info">
+							<div class="video_title"><span>Video Title..................</span></div>
+							<div class="someinfo">
+								<div class="creator"><div></div><span>User001122334455</span></div>
+								<div class="thumb"><div></div><span>1000.0k</span></div>
+								<div class="date"><span>Create Date:</span><span>14:15:56 01/02/2021</span></div>
+							</div>
+							<div class="tag">
+								<div class="taglogo"></div>
+								<span class="tagcontent">Tag1</span>
+								<span class="tagcontent">Tag2</span>
+								<span class="tagcontent">Tag3</span>
+								<span class="tagcontent">Tag4</span>
+								<span class="tagcontent">Tag5</span>
+							</div>
+							<div><span class="description">A video description is a piece of metadata that helps YouTube understand the content of a video. Descriptions that are well optimized can lead to higher rankings in YouTube search.</span></div>
+						</div>
+						<div class="operation">
+							<div class="operation_position">
+								<button class="modify"></button>
+							</div>
+							<div class="operation_position">
+								<button class="delete"></button>
+							</div>
+						</div>
+					</div>
+					<div class="video">
+						<img src="image/videopicture.jpg">
+						<div class="video-info">
+							<div class="video_title"><span>Video Title..................</span></div>
+							<div class="someinfo">
+								<div class="creator"><div></div><span>User001122334455</span></div>
+								<div class="thumb"><div></div><span>1000.0k</span></div>
+								<div class="date"><span>Create Date:</span><span>14:15:56 01/02/2021</span></div>
+							</div>
+							<div class="tag">
+								<div class="taglogo"></div>
+								<span class="tagcontent">Tag1</span>
+								<span class="tagcontent">Tag2</span>
+								<span class="tagcontent">Tag3</span>
+								<span class="tagcontent">Tag4</span>
+								<span class="tagcontent">Tag5</span>
+							</div>
+							<div><span class="description">A video description is a piece of metadata that helps YouTube understand the content of a video. Descriptions that are well optimized can lead to higher rankings in YouTube search.</span></div>
+						</div>
+						<div class="operation">
+							<div class="operation_position">
+								<button class="modify"></button>
+							</div>
+							<div class="operation_position">
+								<button class="delete"></button>
+							</div>
+						</div>
+					</div>
+					<div class="page">
+						<button class="previouspage">Prev</button>
+						<button class="nextpage">Next</button>
+					</div>
+				</div>
+				
+				
+			</div>
+			
+		</div>
+	</div>
+</body>
+</html>

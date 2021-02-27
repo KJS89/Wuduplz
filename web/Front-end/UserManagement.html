@@ -1,0 +1,804 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<title>User Mangement</title>
+	<style type="text/css">
+		* {
+			margin: 0;
+			padding: 0;
+		}
+
+		.head-stand {
+			height: calc(100vh/15);
+			width: calc(100vw);
+		}
+		.header {
+			float: left;
+			position: fixed;
+			height: calc(100vh/15);
+			width: calc(100vw);
+			box-shadow:0px 5px 8px #EFEDED;
+		}
+
+		.mainbody {
+			margin-top: 15px;
+		}
+
+		.sidebar {
+			float: left;
+			height: calc(100vh/15*14 - 15px);
+			width: 200px;
+			box-shadow:5px 0px 8px #EFEDED;
+			position: fixed;
+		}
+
+		.content {
+			float: right;
+			margin-left: 15px;
+			box-shadow:5px 0px 8px #EFEDED;
+			top: calc(100vh/15 + 15px);
+			width: calc(100vw - 215px);
+			height: calc(100vh/15*14 - 15px);
+			overflow: scroll;
+		}
+
+		
+
+		.logo {
+			float: left;
+			display: inline-block;
+			
+			height: calc(100vh/15 - 15px);
+			width: 250px;
+			margin-left: 25px;
+			margin-top: 8px;
+			font-size: 30px;
+		}
+
+		.logo img {
+			float: left;
+			height: calc(100vh/15 - 15px);
+			width: calc(100vh/15 - 15px);
+		}
+
+		.logo span {
+			float: left;
+			height: calc(100vh/15 - 15px);
+			margin-left: 10px;
+			line-height: calc(100vh/15 - 15px);
+			font-family: "Times New Roman",Georgia,Serif;
+			color: #98C6F2;
+			font-weight: bold;
+		}
+
+		.userpicture {
+			float: left;
+			margin-left: calc(55vw);
+			margin-top: 8px;
+			height: calc(100vh/15 - 15px); 
+			width: calc(100vh/15 - 15px);
+			border-radius: 200px;
+			 
+			background-image: url(image/userpicture.jpeg);
+			background-repeat: no-repeat;
+			background-size: contain;
+		}
+		.username {
+			float: left;
+			margin-left: 10px;
+			margin-top: 8px;
+			width: 100px;
+		}
+		.username span {
+			color: #707071;
+			font-size: 18px;
+			height: calc(100vh/15 - 15px);
+			line-height: calc(100vh/15 - 15px);
+			width: 100px;
+			margin-top: 5px;
+		}
+
+		.logout {
+			float: left;
+			margin-left: 10px;
+			margin-top: 10px;
+			width: calc(100vh/15 - 15px);
+		}
+
+		.logout button {
+			height: calc(100vh/15 - 20px);
+			width: calc(100vh/15 - 20px);
+			background-color: #fff;
+			background-image: url(image/icon_logout.svg);
+			background-size: contain;
+			border: none;
+		}
+
+		.sidebar ul {
+			list-style: none;
+			margin-top: 30px;
+		}
+
+		.vernier {
+			float: left;
+			height: 20px;
+			width: 6px;
+			
+		}
+
+		.sidebar span {
+			margin-left: 20px;
+		}
+
+		.sidebar ul a {
+			float: left;
+			width: 200px;
+			font-size: 18px;
+			color: #AEAEB2;
+			text-decoration: none;
+			margin-top: 10px;
+		}
+
+		.sidebar ul a:hover {
+			font-size: 18px;
+			font-weight: bold;
+			color: #707071;
+		}
+
+		.sidebar ul a:hover > .vernier {
+			background-color: #98C6F2;
+		}
+
+		.content_position {
+			margin-top: 80px;
+			margin-left: 80px;
+			margin-right: 80px;
+
+		}
+
+		.searchbox {
+			float: left;
+			border: 2px solid #98C6F2;
+			border-radius: 8px;
+		}
+
+		.tool{
+			width: calc(100vw - 375px);
+		}
+
+		.searchbox div {
+			float: left;
+			margin-left: 5px;
+			margin-top: 1px;
+			height: calc(100vh/15 - 20px);
+			width: calc(100vh/15 - 20px);
+			border-radius: 200px;
+			background-image: url(image/sousuo.svg);
+			background-color: #fff;
+			background-size: contain;
+			background-repeat: no-repeat;
+		}
+
+		.searchbox input {
+			float: left;
+			border-radius: 8px;
+			height: calc(100vh/15 - 20px);
+			width: calc(310px - 100vh/15);
+			border: none;
+			
+		}
+		.content-uinfo {
+			margin-top: 5px;
+			float: right;
+			
+			border-collapse: collapse;
+		}
+
+		table {
+			width: calc(100vw - 375px);
+			border: none;
+		}
+
+		table .odd {
+			height: calc(5vh);
+			background-color: #EFF5FC;
+			text-align: center;
+			align-items: center;
+			align-content: center;
+		}
+
+		table .even {
+			text-align: center;
+			height: calc(5vh);
+		}
+
+		.operation {
+			text-align: center;
+			width: calc(17vh);
+		}
+
+		.modify_even {
+			float: left;
+			margin-left: calc(2vh);
+			margin-top: calc(1vh);
+			height: calc(3vh);
+			width: calc(3vh);
+			background-color: #fff;
+			border: none;
+			background-image: url(image/xiugai.svg);
+			background-size: contain;
+			background-repeat: no-repeat;
+		}
+
+		.admin_even {
+			float: left;
+			margin-left: calc(2vh);
+			margin-top: calc(1vh);
+			height: calc(3vh);
+			width: calc(3vh);
+			background-color: #fff;
+			border: none;
+
+			background-image: url(image/jurassic_admin.svg);
+			background-size: contain;
+			background-repeat: no-repeat;
+		}
+
+		.delete_even {
+			float:left;
+			margin-left: calc(2vh);
+			margin-top: calc(1vh);
+			height: calc(3vh);
+			width: calc(3vh);
+			background-color: #fff;
+			border: none;
+
+			background-image: url(image/shanchu.svg);
+			background-size: contain;
+			background-repeat: no-repeat;
+		}
+
+		.modify_odd {
+			float: left;
+			margin-left: calc(2vh);
+			margin-top: calc(1vh);
+			height: calc(3vh);
+			width: calc(3vh);
+			background-color: #EFF5FC;
+			border: none;
+			background-image: url(image/xiugai.svg);
+			background-size: contain;
+			background-repeat: no-repeat;
+		}
+
+		.admin_odd {
+			float: left;
+			margin-left: calc(2vh);
+			margin-top: calc(1vh);
+			height: calc(3vh);
+			width: calc(3vh);
+			background-color: #EFF5FC;
+			border: none;
+
+			background-image: url(image/jurassic_admin.svg);
+			background-size: contain;
+			background-repeat: no-repeat;
+		}
+
+		.delete_odd {
+			float:left;
+			margin-left: calc(2vh);
+			margin-top: calc(1vh);
+			height: calc(3vh);
+			width: calc(3vh);
+			background-color: #EFF5FC;
+			border: none;
+
+			background-image: url(image/shanchu.svg);
+			background-size: contain;
+			background-repeat: no-repeat;
+		}
+
+		.table-head {
+			color: #fff;
+			background-color: #98C6F2;
+			height: calc(6vh);
+		}
+
+		.page {
+			float: left;
+			width: calc(100vw - 375px);
+			height: calc(5vh);
+			margin-top: 5px;
+			margin-bottom: calc(15vh);
+		}
+
+		.previouspage {
+			float: left;
+			border-radius: 5px;
+			background-color: #98C6F2;
+			width: calc(12vh);
+			height: calc(5vh);
+			color: #fff;
+			line-height: calc(5vh);
+			font-size: 20px;
+			
+			text-align: center;
+			border: none;
+		}
+
+		.nextpage {
+			float: right;
+			border-radius: 5px;
+			background-color: #98C6F2;
+			width: calc(12vh);
+			height: calc(5vh);
+			color: #fff;
+			line-height: calc(5vh);
+			font-size: 20px;
+			
+			text-align: center;
+			border: none;
+		}
+
+	</style>
+</head>
+<body>
+	<div class="head-stand">
+		<div class="header">
+			<div class="logo">
+				<img src="image/LOGO-1.jpg">
+				<span>Wuduplz</span>
+			</div>
+			<div class="userpicture"></div>
+			<div class="username"><span>BalaBala</span></div>
+			<div class="logout">
+				<button></button>
+			</div>
+		</div>
+	</div>
+	
+	<div class="mainbody">
+		<div class="sidebar">
+			<ul>
+				<li><a href="#"><div class="vernier"></div><span>Video Management</span></a></li>
+				<li><a href="#"><div class="vernier"></div><span>User Management</span></a></li>
+				<li><a href="#"><div class="vernier"></div><span>... Management</span></a></li>
+			</ul>
+		</div>
+		<div class="content">
+			<div class="content_position">
+				<div class="tool">
+					<div class="searchbox">
+						<div></div>
+						<input type="text" name="search">
+					</div>
+					<!--<button class="filter">Filter</button>-->
+				</div>
+				<div class="content-uinfo">
+					<table border="0" cellspacing="0">
+						<tr class="table-head">
+							<th>User ID</th>
+							<th>User Name</th>
+							<th>Password</th>
+							<th>Email</th>
+							<th>Location</th>
+							<th>Membership</th>
+							<th>Request</br> Count</th>
+							<th>Respond</br> Count</th>
+							<th>Thumb Count</th>
+							<th>Operation</th>
+						</tr>
+						<tr class="even">
+							<td>User0001</td>
+							<td>Ying Tan</td>
+							<td>123456</td>
+							<td>hsneifna@gmail.com</td>
+							<td>Ottawa, Canada</td>
+							<td>N1</td>
+							<td>20</td>
+							<td>20</td>
+							<td>1000.0k</td>
+							<td class="operation">
+								<button class="modify_even"></button>
+								<button class="admin_even"></button>
+								<button class="delete_even"></button>
+								
+							</td>
+						</tr>
+						<tr class="odd">
+							<td>User0001</td>
+							<td>Ying Tan</td>
+							<td>123456</td>
+							<td>hsneifna@gmail.com</td>
+							<td>Ottawa, Canada</td>
+							<td>N1</td>
+							<td>20</td>
+							<td>20</td>
+							<td>1000.0k</td>
+							<td>
+								<button class="modify_odd"></button>
+								<button class="admin_odd"></button>
+								<button class="delete_odd"></button>
+							</td>
+						</tr>
+
+						<tr class="even">
+							<td>User0001</td>
+							<td>Ying Tan</td>
+							<td>123456</td>
+							<td>hsneifna@gmail.com</td>
+							<td>Ottawa, Canada</td>
+							<td>N1</td>
+							<td>20</td>
+							<td>20</td>
+							<td>1000.0k</td>
+							<td class="operation">
+								<button class="modify_even"></button>
+								<button class="admin_even"></button>
+								<button class="delete_even"></button>
+								
+							</td>
+						</tr>
+						<tr class="odd">
+							<td>User0001</td>
+							<td>Ying Tan</td>
+							<td>123456</td>
+							<td>hsneifna@gmail.com</td>
+							<td>Ottawa, Canada</td>
+							<td>N1</td>
+							<td>20</td>
+							<td>20</td>
+							<td>1000.0k</td>
+							<td>
+								<button class="modify_odd"></button>
+								<button class="admin_odd"></button>
+								<button class="delete_odd"></button>
+							</td>
+						</tr>
+						<tr class="even">
+							<td>User0001</td>
+							<td>Ying Tan</td>
+							<td>123456</td>
+							<td>hsneifna@gmail.com</td>
+							<td>Ottawa, Canada</td>
+							<td>N1</td>
+							<td>20</td>
+							<td>20</td>
+							<td>1000.0k</td>
+							<td class="operation">
+								<button class="modify_even"></button>
+								<button class="admin_even"></button>
+								<button class="delete_even"></button>
+								
+							</td>
+						</tr>
+						<tr class="odd">
+							<td>User0001</td>
+							<td>Ying Tan</td>
+							<td>123456</td>
+							<td>hsneifna@gmail.com</td>
+							<td>Ottawa, Canada</td>
+							<td>N1</td>
+							<td>20</td>
+							<td>20</td>
+							<td>1000.0k</td>
+							<td>
+								<button class="modify_odd"></button>
+								<button class="admin_odd"></button>
+								<button class="delete_odd"></button>
+							</td>
+						</tr>
+						<tr class="even">
+							<td>User0001</td>
+							<td>Ying Tan</td>
+							<td>123456</td>
+							<td>hsneifna@gmail.com</td>
+							<td>Ottawa, Canada</td>
+							<td>N1</td>
+							<td>20</td>
+							<td>20</td>
+							<td>1000.0k</td>
+							<td class="operation">
+								<button class="modify_even"></button>
+								<button class="admin_even"></button>
+								<button class="delete_even"></button>
+								
+							</td>
+						</tr>
+						<tr class="odd">
+							<td>User0001</td>
+							<td>Ying Tan</td>
+							<td>123456</td>
+							<td>hsneifna@gmail.com</td>
+							<td>Ottawa, Canada</td>
+							<td>N1</td>
+							<td>20</td>
+							<td>20</td>
+							<td>1000.0k</td>
+							<td>
+								<button class="modify_odd"></button>
+								<button class="admin_odd"></button>
+								<button class="delete_odd"></button>
+							</td>
+						</tr>
+						<tr class="even">
+							<td>User0001</td>
+							<td>Ying Tan</td>
+							<td>123456</td>
+							<td>hsneifna@gmail.com</td>
+							<td>Ottawa, Canada</td>
+							<td>N1</td>
+							<td>20</td>
+							<td>20</td>
+							<td>1000.0k</td>
+							<td class="operation">
+								<button class="modify_even"></button>
+								<button class="admin_even"></button>
+								<button class="delete_even"></button>
+								
+							</td>
+						</tr>
+						<tr class="odd">
+							<td>User0001</td>
+							<td>Ying Tan</td>
+							<td>123456</td>
+							<td>hsneifna@gmail.com</td>
+							<td>Ottawa, Canada</td>
+							<td>N1</td>
+							<td>20</td>
+							<td>20</td>
+							<td>1000.0k</td>
+							<td>
+								<button class="modify_odd"></button>
+								<button class="admin_odd"></button>
+								<button class="delete_odd"></button>
+							</td>
+						</tr>
+						<tr class="even">
+							<td>User0001</td>
+							<td>Ying Tan</td>
+							<td>123456</td>
+							<td>hsneifna@gmail.com</td>
+							<td>Ottawa, Canada</td>
+							<td>N1</td>
+							<td>20</td>
+							<td>20</td>
+							<td>1000.0k</td>
+							<td class="operation">
+								<button class="modify_even"></button>
+								<button class="admin_even"></button>
+								<button class="delete_even"></button>
+								
+							</td>
+						</tr>
+						<tr class="odd">
+							<td>User0001</td>
+							<td>Ying Tan</td>
+							<td>123456</td>
+							<td>hsneifna@gmail.com</td>
+							<td>Ottawa, Canada</td>
+							<td>N1</td>
+							<td>20</td>
+							<td>20</td>
+							<td>1000.0k</td>
+							<td>
+								<button class="modify_odd"></button>
+								<button class="admin_odd"></button>
+								<button class="delete_odd"></button>
+							</td>
+						</tr>
+												<tr class="even">
+							<td>User0001</td>
+							<td>Ying Tan</td>
+							<td>123456</td>
+							<td>hsneifna@gmail.com</td>
+							<td>Ottawa, Canada</td>
+							<td>N1</td>
+							<td>20</td>
+							<td>20</td>
+							<td>1000.0k</td>
+							<td class="operation">
+								<button class="modify_even"></button>
+								<button class="admin_even"></button>
+								<button class="delete_even"></button>
+								
+							</td>
+						</tr>
+						<tr class="odd">
+							<td>User0001</td>
+							<td>Ying Tan</td>
+							<td>123456</td>
+							<td>hsneifna@gmail.com</td>
+							<td>Ottawa, Canada</td>
+							<td>N1</td>
+							<td>20</td>
+							<td>20</td>
+							<td>1000.0k</td>
+							<td>
+								<button class="modify_odd"></button>
+								<button class="admin_odd"></button>
+								<button class="delete_odd"></button>
+							</td>
+						</tr>
+
+						<tr class="even">
+							<td>User0001</td>
+							<td>Ying Tan</td>
+							<td>123456</td>
+							<td>hsneifna@gmail.com</td>
+							<td>Ottawa, Canada</td>
+							<td>N1</td>
+							<td>20</td>
+							<td>20</td>
+							<td>1000.0k</td>
+							<td class="operation">
+								<button class="modify_even"></button>
+								<button class="admin_even"></button>
+								<button class="delete_even"></button>
+								
+							</td>
+						</tr>
+						<tr class="odd">
+							<td>User0001</td>
+							<td>Ying Tan</td>
+							<td>123456</td>
+							<td>hsneifna@gmail.com</td>
+							<td>Ottawa, Canada</td>
+							<td>N1</td>
+							<td>20</td>
+							<td>20</td>
+							<td>1000.0k</td>
+							<td>
+								<button class="modify_odd"></button>
+								<button class="admin_odd"></button>
+								<button class="delete_odd"></button>
+							</td>
+						</tr>
+						<tr class="even">
+							<td>User0001</td>
+							<td>Ying Tan</td>
+							<td>123456</td>
+							<td>hsneifna@gmail.com</td>
+							<td>Ottawa, Canada</td>
+							<td>N1</td>
+							<td>20</td>
+							<td>20</td>
+							<td>1000.0k</td>
+							<td class="operation">
+								<button class="modify_even"></button>
+								<button class="admin_even"></button>
+								<button class="delete_even"></button>
+								
+							</td>
+						</tr>
+						<tr class="odd">
+							<td>User0001</td>
+							<td>Ying Tan</td>
+							<td>123456</td>
+							<td>hsneifna@gmail.com</td>
+							<td>Ottawa, Canada</td>
+							<td>N1</td>
+							<td>20</td>
+							<td>20</td>
+							<td>1000.0k</td>
+							<td>
+								<button class="modify_odd"></button>
+								<button class="admin_odd"></button>
+								<button class="delete_odd"></button>
+							</td>
+						</tr>
+						<tr class="even">
+							<td>User0001</td>
+							<td>Ying Tan</td>
+							<td>123456</td>
+							<td>hsneifna@gmail.com</td>
+							<td>Ottawa, Canada</td>
+							<td>N1</td>
+							<td>20</td>
+							<td>20</td>
+							<td>1000.0k</td>
+							<td class="operation">
+								<button class="modify_even"></button>
+								<button class="admin_even"></button>
+								<button class="delete_even"></button>
+								
+							</td>
+						</tr>
+						<tr class="odd">
+							<td>User0001</td>
+							<td>Ying Tan</td>
+							<td>123456</td>
+							<td>hsneifna@gmail.com</td>
+							<td>Ottawa, Canada</td>
+							<td>N1</td>
+							<td>20</td>
+							<td>20</td>
+							<td>1000.0k</td>
+							<td>
+								<button class="modify_odd"></button>
+								<button class="admin_odd"></button>
+								<button class="delete_odd"></button>
+							</td>
+						</tr>
+						<tr class="even">
+							<td>User0001</td>
+							<td>Ying Tan</td>
+							<td>123456</td>
+							<td>hsneifna@gmail.com</td>
+							<td>Ottawa, Canada</td>
+							<td>N1</td>
+							<td>20</td>
+							<td>20</td>
+							<td>1000.0k</td>
+							<td class="operation">
+								<button class="modify_even"></button>
+								<button class="admin_even"></button>
+								<button class="delete_even"></button>
+								
+							</td>
+						</tr>
+						<tr class="odd">
+							<td>User0001</td>
+							<td>Ying Tan</td>
+							<td>123456</td>
+							<td>hsneifna@gmail.com</td>
+							<td>Ottawa, Canada</td>
+							<td>N1</td>
+							<td>20</td>
+							<td>20</td>
+							<td>1000.0k</td>
+							<td>
+								<button class="modify_odd"></button>
+								<button class="admin_odd"></button>
+								<button class="delete_odd"></button>
+							</td>
+						</tr>
+						<tr class="even">
+							<td>User0001</td>
+							<td>Ying Tan</td>
+							<td>123456</td>
+							<td>hsneifna@gmail.com</td>
+							<td>Ottawa, Canada</td>
+							<td>N1</td>
+							<td>20</td>
+							<td>20</td>
+							<td>1000.0k</td>
+							<td class="operation">
+								<button class="modify_even"></button>
+								<button class="admin_even"></button>
+								<button class="delete_even"></button>
+								
+							</td>
+						</tr>
+						<tr class="odd">
+							<td>User0001</td>
+							<td>Ying Tan</td>
+							<td>123456</td>
+							<td>hsneifna@gmail.com</td>
+							<td>Ottawa, Canada</td>
+							<td>N1</td>
+							<td>20</td>
+							<td>20</td>
+							<td>1000.0k</td>
+							<td>
+								<button class="modify_odd"></button>
+								<button class="admin_odd"></button>
+								<button class="delete_odd"></button>
+							</td>
+						</tr>
+						
+					</table>
+
+					<div class="page">
+						<button class="previouspage">Prev</button>
+						<button class="nextpage">Next</button>
+					</div>
+				</div>
+				
+			</div>
+			
+		</div>
+	</div>
+</body>
+</html>

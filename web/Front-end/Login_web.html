@@ -1,0 +1,127 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<title></title>
+	<style type="text/css">
+		* {
+			margin: 0;
+			padding: 0;
+		}
+		.background {
+			background-color: #98C6F2;
+			width: calc(100vw);
+			height: calc(100vh);
+		}
+
+		.w {
+			width: 1200px;
+			height: calc(100vh);
+			margin: auto;
+		}
+
+		.login {
+			float: right;
+			border-radius: 15px;
+			background-color:rgba(255,255,255,0.7);
+			width: 300px;
+			height: 350px;
+			margin-left: 60px;
+			margin-right: 50px;
+			margin-top: calc(25vh);
+		}
+
+		.picture {
+			display: inline-block;
+			height: calc(100vh);
+			width: 700px;
+			background-position: center;
+			background-size: contain; 
+			background-repeat: no-repeat;
+			background-image: url(image/undraw_videographer_nnc7.svg);
+		}
+
+		.loginbox {
+			display: inline-block;
+			height: calc(100vh);
+			margin: 0 auto;
+		}
+
+		.login-hd {
+			font-weight: bold;
+			height: 50px;
+			font-size: 28px;
+			text-align: center;
+			line-height: 70px;
+			color: #717070;
+			
+		}
+
+		.login-bd {
+			padding-left: 35px;
+			padding-right: 35px;
+		}
+
+		.login-font {
+			font-size: 18px;
+			color: #717070;
+		}
+
+		.login-bd input {
+			border-radius: 5px;
+			width: 230px;
+			height: 40px;
+			border: none;
+		}
+
+		.login-btn {
+			margin-top: 20px;
+			width: 230px;
+			height: 40px;
+			background-color: #3375B8;
+			font-size: 20px;
+			font-weight: bold;
+			color: #fff;
+			border: none;
+		}
+
+		.login-line {
+			margin-top: 5px;
+		}
+
+	</style>
+</head>
+<body>
+	<div class = "background">
+		<div class = "w">
+			<div class= "picture"></div>
+			<div class= "loginbox">
+				<div class = "login">
+					<div class = "login-hd">LogIn</div>
+					<div class="login-bd">
+						<div class="login-line">
+							<div class="login-font">UserName</div>
+							<div>
+								<input type="text" name="">
+							</div>
+						</div>
+						<div class="login-line">
+							<div class="login-font">Password</div>
+							<div>
+								<input type="text" name="">
+							</div>
+						</div>
+						<div class="login-line">
+							<div class="login-font">Verification Code</div>
+							<div>
+								<input type="text" name="">
+							</div>
+						</div>
+						<button class="login-btn">LOGIN</button>
+					</div>
+				</div>
+			</div>
+			
+		</div>
+	</div>
+</body>
+</html>
