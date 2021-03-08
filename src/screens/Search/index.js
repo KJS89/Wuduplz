@@ -103,7 +103,7 @@ const Search = ({ route, navigation }) => {
                     }}
                     onChangeText={(text) => setSearch(text)}
                     onSubmitEditing={() => {
-                        navigation.navigate("Results", {query: search});
+                        navigation.push("Root", {screen: 'Results', params: {query: search}});
                     }}
                 />
                 {categories.map((categorie, k) => (
@@ -153,7 +153,7 @@ const Search = ({ route, navigation }) => {
                             <ScrollView horizontal showsHorizontalScrollIndicator={false}>
                                 {randomize(videos).map((video, key) => (
                                     <TouchableHighlight key={key} onPress={() => {
-                                        navigation.navigate("Video", {itemId: 'from Search', otherParams: key})
+                                        navigation.push("Root", {screen: "Video", params: {itemId: 'from Search', otherParams: key}})
                                     }}>
                                         <ImageBackground
                                             key={key}
@@ -182,4 +182,4 @@ const Search = ({ route, navigation }) => {
     )
 };
 
-export default Search
+export default Search;

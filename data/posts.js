@@ -17,7 +17,7 @@ export default [
 },
 {
 	id: '2',
-	videoUri: 'http://techslides.com/demos/samples/sample.webm',
+	videoUri: 'https://d8vywknz0hvjw.cloudfront.net/fitenium-media-prod/videos/45fee890-a74f-11ea-8725-311975ea9616/proccessed_720.mp4',
 	user: {
 		id: 'u1',
 		username: '@gladiator',

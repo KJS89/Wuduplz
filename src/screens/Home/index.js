@@ -1,14 +1,27 @@
 import React, { useState } from 'react';
 import {View, FlatList, Dimensions, ScrollView} from 'react-native';
+import { useEffect } from 'react/cjs/react.development';
 
 import Post from '../../components/Post';
-import posts from '../../../data/posts';
-
+import posts1 from '../../../data/posts';
+import axios from 'axios';
+import {SERVER_ADDRESS} from '../../../data/address'
 
 const Home = ({route, navigation}) => {
+
 	const [post, setPost] = useState(route.params.itemId);
-	console.log(route.params.itemId);
-	console.log(route.params.otherParams);
+	const [posts,setPosts] = useState([])
+	useEffect(()=>{
+		async function getData(){
+			console.log('home effect executed!!!',`${SERVER_ADDRESS}/front-end/home/${route.params.videoId}`)
+			let result = await axios.get(`${SERVER_ADDRESS}/front-end/home/${route.params.videoId}`)
+			console.log('home result is ',result['data'])
+			setPosts([result['data']])
+
+		};
+		getData();
+	},[route.params.videoId])
+
 
 	return (
 		<View>
@@ -22,7 +35,7 @@ const Home = ({route, navigation}) => {
 			/>
 		</View>
 
-)
+	)
 }
 
 export default Home;

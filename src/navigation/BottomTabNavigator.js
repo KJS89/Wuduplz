@@ -12,9 +12,10 @@ import AddRequest from '../screens/Upload';
 import Entypo from 'react-native-vector-icons/Entypo'
 import AntDesign from 'react-native-vector-icons/AntDesign'
 
-import plusIcon from '../assets/images/plus-icon.png'
+import plusIcon from '../assets/images/blue-plus-icon.webp'
 import Responses from "../screens/Requests/Responses";
 import Results from "../screens/Search/Results";
+import TabBar from "../screens/Requests/TopBar";
 
 const Tab = createBottomTabNavigator();
 
@@ -69,7 +70,7 @@ const BottomTabNavigator = () => {
 			/>
 			<Tab.Screen
 				name='Requests'
-				component={Requests}
+				component={TabBar}
 				options={{
 					tabBarIcon: ({color}) => (
 						<Entypo name={'message'} size={24} color={color} />

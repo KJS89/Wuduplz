@@ -12,6 +12,10 @@ import Requests from '../screens/Requests'
 import Responses from "../screens/Requests/Responses";
 import Results from '../screens/Search/Results'
 import BottomTabNavigator from "./BottomTabNavigator";
+import Record from "../screens/Requests/Record";
+
+import LoginView from '../screens/Auth/login';
+import SignUp from '../screens/Auth/signup';
 
 const Stack = createStackNavigator();
 
@@ -20,8 +24,11 @@ const RootNavigation = () => {
 		<NavigationContainer>
 			<Stack.Navigator screenOptions={{
 				headerShown: false,
-			}}>
+			}} initialRouteName={'Login'}>
 				<Stack.Screen name="Root" component={BottomTabNavigator} />
+				<Stack.Screen name="Record" component={Record} />
+				<Stack.Screen name="Login" component={LoginView} />
+				<Stack.Screen name="SignUp" component={SignUp} />
 			</Stack.Navigator>
 		</NavigationContainer>
 	)

@@ -117,10 +117,10 @@ const Results = ({route, navigation}) => {
                                 }}>
                                     {randomize(videos).map((video, key) => (
                                         <TouchableHighlight key={key} onPress={() => {
-                                            navigation.navigate("Video", {
+                                            navigation.push("Root", {screen: "Video", params: {
                                                     itemId: 'from Results',
                                                     otherParams: key,
-                                                }
+                                                }}
                                             )
                                         }}>
                                             <ImageBackground

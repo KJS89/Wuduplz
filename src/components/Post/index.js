@@ -1,4 +1,4 @@
-import React, {useState} from 'react';
+import React, {useState, useEffect} from 'react';
 import {
 	View,
 	Text,
@@ -18,9 +18,13 @@ import FontAwesome from 'react-native-vector-icons/FontAwesome'
 import Fontisto from 'react-native-vector-icons/Fontisto'
 import Comment from "../Comment";
 import Input from "../Comment/input";
+import axios from 'axios';
+import {SERVER_ADDRESS} from '../../../data/address';
 
 
 const Post = (props) => {
+	const [comment,setComment]= useState([]);
+	const [text,setText] = useState('')
 	// state used to represent the pause/play feature
 	const [paused, setPaused] = useState(true);
 	const onPlayPausePress = () => {
@@ -29,6 +33,13 @@ const Post = (props) => {
 
 	// data of the post
 	const [post, setPost] = useState(props.post);
+	// data of the post
+	useEffect(() => {
+		console.log(props.post)
+		setPost({
+			...props.post
+		})
+	},[props])
 
 	const [modal, setModal] = useState(false);
 	const setModalVisible = () => {
@@ -48,13 +59,16 @@ const Post = (props) => {
 
 	// data to represent the comment state
 	const [isCommented, setIsCommented] = useState(false);
-	const onCommentPress = () => {
+	const onCommentPress = async() => {
 		const commentsToAdd = isCommented ? -1 : 1;
 		setPost({
 			...post,
 			comments: post.comments + commentsToAdd
 		})
 		setIsCommented(!isCommented)
+		console.log('comment url is ',SERVER_ADDRESS+`/front-end/getComment/${post.VideoId}`)
+		let result = await axios.get(SERVER_ADDRESS+`/front-end/getComment/${post.VideoId}`)
+		setComment(result['data'])
 		setModalVisible(!modal);
 	}
 
@@ -68,6 +82,33 @@ const Post = (props) => {
 		})
 		setIsShared(!isShared)
 	}
+
+	const textChange = (text) => {
+		setText(text)
+	}
+
+	const postComments = async() => {
+		await fetch(SERVER_ADDRESS+'/front-end/comment', {
+			method: 'POST',
+			headers: {
+				Accept: 'application/json',
+				'Content-Type': 'application/json'
+			},
+			body: JSON.stringify({
+				CommentContent: text,
+				CommentatorId:'cbdef4d4-7168-11eb-a09f-f0795907d9ec',
+				CommentDate:null,
+				ThumberNumber:3,
+				videoId:post.video_id
+			})
+		})
+
+		let result = await axios.create({
+			baseURL:SERVER_ADDRESS
+		}).get('/front-end/getComment/'+post.video_id)
+		setComment(result.data)
+	}
+
 
 	return (
 		<View style={styles.container}>
@@ -91,7 +132,7 @@ const Post = (props) => {
 								</ScrollView>
 
 								{/*keyboard input start*/}
-								<Input closeModal={setModalVisible}/>
+								<Input closeModal={setModalVisible} textChange={textChange} postComments={postComments}/>
 								{/*keyboard input end */}
 							</View>
 						</View>
@@ -109,16 +150,16 @@ const Post = (props) => {
 						alignSelf: 'center',
 						top:'43%',
 						left:'43%'
-					}} name={'play'} size={100} color="white" />}
+					}} name={'play'} size={75} color="white" />}
 					<Video
-						 source={{uri: post.videoUri}}
-						 style = {styles.video}
-						 onError={(e) => console.log("from video: ", e)}
-						 resizeMode={'cover'}
-						 repeat={true}
-						 paused={paused}
-						 controls={false}
-					 />
+						source={{uri:SERVER_ADDRESS+post.videoLocation}}
+						style = {styles.video}
+						onError={(e) => console.log("from video: ", e)}
+						resizeMode={'cover'}
+						repeat={true}
+						paused={paused}
+						controls={false}
+					/>
 
 				<View style={styles.uiContainer}>
 					<View style={styles.rightContainer}>

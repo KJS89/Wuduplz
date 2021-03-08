@@ -5,6 +5,11 @@ import FontAwesome5 from 'react-native-vector-icons/FontAwesome5';
 
 import { Container } from './styles';
 
+import { createMaterialTopTabNavigator } from '@react-navigation/material-top-tabs';
+import Responses from "./Responses";
+
+const SideTab = createMaterialTopTabNavigator();
+
 const Requests = ({route, navigation}) => {
 	const requests = [
 		{
@@ -58,9 +63,9 @@ const Requests = ({route, navigation}) => {
 	return (
 		<Container>
 			<ScrollView style={{paddingHorizontal: 10, margin: 5}}>
-				<View style={{marginTop: 15, marginBottom: 5}}>
-					<Text style={{color: 'black', fontSize: 15, fontWeight: 'bold', marginLeft: 7}}>Requests from you!</Text>
-				</View>
+				{/*<View style={{marginTop: 15, marginBottom: 5}}>*/}
+				{/*	<Text style={{color: 'black', fontSize: 15, fontWeight: 'bold', marginLeft: 7}}>Requests from you!</Text>*/}
+				{/*</View>*/}
 
 				{requests.map((request, key) => (
 					<TouchableOpacity style={{
@@ -68,7 +73,10 @@ const Requests = ({route, navigation}) => {
 						flexDirection: 'row',
 						alignItems: 'center',
 						justifyContent: 'space-between',
-						marginVertical: 10
+						marginVertical: 10,
+						marginBottom: 5,
+						borderBottomWidth: StyleSheet.hairlineWidth,
+						borderBottomColor: '#E5E5E5',
 					}} onPress={() => {navigation.navigate("Responses", {'id': 1})}} key={key}>
 						<Image
 							style={{
