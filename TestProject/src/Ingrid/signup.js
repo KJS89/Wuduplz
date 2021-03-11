@@ -2,13 +2,10 @@ import React from 'react';
 import {
   View, 
   Text, 
-  Button, 
   TextInput,
   Dimensions,
   StyleSheet,
   TouchableOpacity,
-  scaleSizeH,
-  scaleSizeW,
 } from 'react-native';
 
 const AddRequest = ({ navigation }) => {
@@ -17,9 +14,8 @@ const AddRequest = ({ navigation }) => {
   return (
 
   <View style={{flex: 1, alignItems: 'center', justifyContent: 'center',alignSelf: 'stretch'}}> 
-    <Text style={styles.title}> You will find a better world </Text>
 
-    <Text style={styles.step}> Step 1 </Text>
+    <Text style={styles.step}> Email </Text>
       <TextInput
         style={{ height: 40, borderColor: 'blue', borderWidth: 1, margin: 10, width: Dimensions.get('window').width - 30 }}
         onChangeText={text => onChangeText(text)}
@@ -27,7 +23,7 @@ const AddRequest = ({ navigation }) => {
         value={value}
       />
 
-    <Text style={styles.step}> Step 2 </Text>
+    <Text style={styles.step}> Password </Text>
       <TextInput
         style={{ height: 40, borderColor: 'blue', borderWidth: 1, margin: 10, width: Dimensions.get('window').width - 30 }}
         onChangeText={text => onChangeText(text)}
@@ -36,7 +32,7 @@ const AddRequest = ({ navigation }) => {
       />  
     
 
-    <Text style={styles.step}> Step 3 </Text>
+    <Text style={styles.step}> User Name </Text>
       <TextInput
         style={{ height: 40, borderColor: 'blue', borderWidth: 1, margin: 10, width: Dimensions.get('window').width - 30 }}
         onChangeText={text => onChangeText(text)}
@@ -46,7 +42,7 @@ const AddRequest = ({ navigation }) => {
 
 
 
-    <Text style={styles.step}> Step 4 </Text>
+    <Text style={styles.step}> GPS </Text>
     <Text style={styles.text}> Would you like to turn on your GPS </Text>
     <View style={{flexDirection:'row', alignItems:'baseline',}}> 
 
@@ -69,7 +65,7 @@ const AddRequest = ({ navigation }) => {
         value={value}
       />
 
-    <Text style={styles.step}> Step 5 </Text>
+    <Text style={styles.step}> Age </Text>
     <Text style={styles.text}> Are you 18 years old </Text>
 
     <TouchableOpacity activeOpacity={0.5}>
@@ -77,6 +73,12 @@ const AddRequest = ({ navigation }) => {
             <Text style={styles.AgeBottomTxt}>Yes</Text>
           </View>
     </TouchableOpacity>
+    <TextInput
+        style={{ height: 40, borderColor: 'blue', borderWidth: 1, margin: 10, width: Dimensions.get('window').width - 30 }}
+        onChangeText={text => onChangeText(text)}
+        placeholder={'Your year of birth'}
+        value={value}
+      />
 
 
     <TouchableOpacity activeOpacity={0.5}>
@@ -133,15 +135,15 @@ const styles = StyleSheet.create({
     padding:5,
   },
   AgeBottom:{
-    width:60, 
-    height: 40,
+    width:50, 
+    height: 30,
     backgroundColor:'#5858FA',
     marginHorizontal:10
   },
   AgeBottomTxt:{
     color:'white',
     alignSelf:'center', 
-    fontSize:28
+    fontSize:20
   },
 
 
