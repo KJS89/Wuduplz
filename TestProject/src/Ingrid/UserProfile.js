@@ -24,7 +24,7 @@ class loginView extends Component {
 
         <Text>  </Text>
         <View style={{flexDirection:'row', alignItems:'baseline',}}> 
-        <Text style={styles.textstyle}> Username: </Text>
+        <Text style={styles.textstyle}> Nickname: </Text>
         <TextInput style={styles.inputStyle} placeholder={'Nickname shows here'} underlineColorAndroid={'transparent'} keyboardType={'numeric'} />
         </View>
 
