@@ -41,19 +41,19 @@ class loginView extends Component {
 
         // }
         //make request to the server
-        console.log(this.state.Email)
-        let url = `${SERVER_ADDRESS}/front-end/login/validate`
-        let result = await axios.post(url,{Email:this.state.Email,Password:this.state.Password})
-        console.log(result.data)
-        if(result.data.status === 'success'){
-            this.props.RootStore.setEmail(this.state.Email)
-            this.props.RootStore.setPassWord(this.state.PassWord)
-            this.props.RootStore.setStatus(true)
-            this.props.RootStore.setUserId(result.data.userid)
-            this.props.navigation.navigate("Root")
-        }
+        //console.log(this.state.Email)
+        //let url = `${SERVER_ADDRESS}/front-end/login/validate`
+        //let result = await axios.post(url,{Email:this.state.Email,Password:this.state.Password})
+        //console.log(result.data)
+        // if(result.data.status === 'success'){
+        //     this.props.RootStore.setEmail(this.state.Email)
+        //     this.props.RootStore.setPassWord(this.state.PassWord)
+        //     this.props.RootStore.setStatus(true)
+        //     this.props.RootStore.setUserId(result.data.userid)
+        //     this.props.navigation.navigate("Root")
+        // }
 
-        // this.props.navigation.navigate("Root")
+        this.props.navigation.navigate("Root")
         // ,{UserName:this.state.Email,PassWord:this.state.Password}
     }
 

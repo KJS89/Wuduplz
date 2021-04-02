@@ -15,6 +15,8 @@ target 'Wuduplz' do
 
   pod 'react-native-camera', :path => '../node_modules/react-native-camera'
 
+  pod 'react-native-ffmpeg', :path => '../node_modules/react-native-ffmpeg'
+
   target 'WuduplzTests' do
     inherit! :complete
     # Pods for testing

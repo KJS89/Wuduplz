@@ -16,7 +16,7 @@ import BottomTabNavigator from "../../navigation/BottomTabNavigator";
 const Responses = ({route, navigation}) => {
     const responses = [
         {
-            userImage: 'https://t1.ea.ltmcdn.com/en/images/1/7/1/20_white_cat_breeds_full_list_3171_orig.jpg',
+            userImage: 'https://s4.gifyu.com/images/52wf2h.gif',
             username: '@daviddobrik',
             videoId: '1',
             videoDescription: 'here is my white cat!'
@@ -47,13 +47,15 @@ const Responses = ({route, navigation}) => {
                         flexDirection: 'row',
                         alignItems: 'center',
                         justifyContent: 'space-between',
-                        marginVertical: 10
+                        marginVertical: 10,
+                        borderBottomWidth: StyleSheet.hairlineWidth,
+                        borderBottomColor: '#E5E5E5',
                     }} onPress={() => {navigation.navigate("Video")}} key={key}>
                         <Image
                             style={{
                                 width: 66,
-                                height: 66,
-                                borderRadius: 50,
+                                height: 88,
+                                // borderRadius: 50,
                                 borderColor: '#333',
                                 //borderWidth: StyleSheet.hairlineWidth
                             }}

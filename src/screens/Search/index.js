@@ -18,16 +18,16 @@ const Search = ({ route, navigation }) => {
 
     const videos = [
         {url: "https://d8vywknz0hvjw.cloudfront.net/fitenium-media-prod/videos/45fee890-a74f-11ea-8725-311975ea9616/proccessed_720.mp4",
-        image: 'https://i.pinimg.com/564x/27/b4/5c/27b45cfadb28dbd857ebd662fe3cc1fe.jpg',
+        image: 'https://s4.gifyu.com/images/52wf8y.gif',
         likes: 310.2},
         {url: "https://d8vywknz0hvjw.cloudfront.net/fitenium-media-prod/videos/45fee890-a74f-11ea-8725-311975ea9616/proccessed_720.mp4",
-        image: 'https://66.media.tumblr.com/2170b24c045a368996ed3d0b84e74c4e/tumblr_pjn69mp52s1tbym8o_1280.jpg',
+        image: 'https://s4.gifyu.com/images/52wexo.gif',
         likes: 43.3},
         {url: "https://d8vywknz0hvjw.cloudfront.net/fitenium-media-prod/videos/45fee890-a74f-11ea-8725-311975ea9616/proccessed_720.mp4",
-        image: 'https://cdn.mensagenscomamor.com/content/images/m000518052.jpg?v=1&w=600&h=941',
+        image: 'https://s4.gifyu.com/images/52wf2h.gif',
         likes: 12.2},
         {url: "https://d8vywknz0hvjw.cloudfront.net/fitenium-media-prod/videos/45fee890-a74f-11ea-8725-311975ea9616/proccessed_720.mp4",
-        image: 'https://i.pinimg.com/236x/61/69/67/61696742e1b2d8b0d3ed70efaa1b0f89.jpg',
+        image: 'https://s4.gifyu.com/images/52wfp3.gif',
         likes: 100.5},
     ]
 
@@ -159,8 +159,8 @@ const Search = ({ route, navigation }) => {
                                             key={key}
                                             source={{uri:video.image}}
                                             style={{
-                                                width: 145,
-                                                height: 200,
+                                                width: 133,
+                                                height: 180,
                                                 marginHorizontal: 1,
                                                 marginBottom: 1
                                             }}>

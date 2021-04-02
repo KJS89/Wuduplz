@@ -20,6 +20,8 @@ import Comment from "../Comment";
 import Input from "../Comment/input";
 import axios from 'axios';
 import {SERVER_ADDRESS} from '../../../data/address';
+import Like from "../Like";
+import LikeInput from "../Like/input";
 
 
 const Post = (props) => {
@@ -46,6 +48,14 @@ const Post = (props) => {
 		setModal(!modal);
 	};
 
+	const [likesModal, setLikesModal] = useState(false);
+	const setLikesModalVisible = () => {
+		setLikesModal(!likesModal)
+	}
+	const onLikesLongPress = async() => {
+		setLikesModal(!likesModal)
+	}
+
 	// data to represent the like state
 	const [isLiked, setIsLiked] = useState(false);
 	const onLikePress = () => {
@@ -66,9 +76,9 @@ const Post = (props) => {
 			comments: post.comments + commentsToAdd
 		})
 		setIsCommented(!isCommented)
-		console.log('comment url is ',SERVER_ADDRESS+`/front-end/getComment/${post.VideoId}`)
-		let result = await axios.get(SERVER_ADDRESS+`/front-end/getComment/${post.VideoId}`)
-		setComment(result['data'])
+		// console.log('comment url is ',SERVER_ADDRESS+`/front-end/getComment/${post.VideoId}`)
+		// let result = await axios.get(SERVER_ADDRESS+`/front-end/getComment/${post.VideoId}`)
+		// setComment(result['data'])
 		setModalVisible(!modal);
 	}
 
@@ -132,7 +142,43 @@ const Post = (props) => {
 								</ScrollView>
 
 								{/*keyboard input start*/}
-								<Input closeModal={setModalVisible} textChange={textChange} postComments={postComments}/>
+								<Input closeModal={setModalVisible} textChange={textChange}/>
+								{/*keyboard input end */}
+							</View>
+						</View>
+					</View>
+				</Modal>
+				<Modal
+					animationType={"slide"}
+					transparent={true}
+					visible={likesModal}
+				>
+					<View style={styles.centeredView}>
+						<View style={{...styles.modalView, margin:50}}>
+							<Text style={{fontWeight: 'bold', padding: 5, fontSize: 20}}>Likes</Text>
+							<View style={{flex: 1, backgroundColor: '#FFF'}}>
+								<ScrollView
+								>
+									<Like username={'johnatthan'} content={'this is not what i asked for !'}/>
+									<Like username={'steve'} content={'this is not what i asked for !'}/>
+									<Like username={'xing'} content={'this is not what i asked for !'}/>
+									<Like username={'john'} content={'this is not what i asked for !'}/>
+									<Like username={'johnatthan'} content={'this is not what i asked for !'}/>
+									<Like username={'steve'} content={'this is not what i asked for !'}/>
+									<Like username={'xing'} content={'this is not what i asked for !'}/>
+									<Like username={'john'} content={'this is not what i asked for !'}/>
+									<Like username={'johnatthan'} content={'this is not what i asked for !'}/>
+									<Like username={'steve'} content={'this is not what i asked for !'}/>
+									<Like username={'xing'} content={'this is not what i asked for !'}/>
+									<Like username={'john'} content={'this is not what i asked for !'}/>
+									<Like username={'johnatthan'} content={'this is not what i asked for !'}/>
+									<Like username={'steve'} content={'this is not what i asked for !'}/>
+									<Like username={'xing'} content={'this is not what i asked for !'}/>
+									<Like username={'john'} content={'this is not what i asked for !'}/>
+								</ScrollView>
+
+								{/*keyboard input start*/}
+								<LikeInput closeModal={setLikesModalVisible} textChange={textChange}/>
 								{/*keyboard input end */}
 							</View>
 						</View>
@@ -152,7 +198,7 @@ const Post = (props) => {
 						left:'43%'
 					}} name={'play'} size={75} color="white" />}
 					<Video
-						source={{uri:SERVER_ADDRESS+post.videoLocation}}
+						source={{uri:post.videoUri}}
 						style = {styles.video}
 						onError={(e) => console.log("from video: ", e)}
 						resizeMode={'cover'}
@@ -169,13 +215,13 @@ const Post = (props) => {
 							/>	
 						</View>
 
-						<TouchableOpacity style={styles.iconContainer} onPress={onLikePress}>
+						<TouchableOpacity style={styles.iconContainer} onLongPress={onLikesLongPress} onPress={onLikePress}>
 							<AntDesign name={'heart'} size={25} color={isLiked ? 'red' : 'white'} />
 							<Text style={styles.statsLabel}>{post.likes}</Text>
 						</TouchableOpacity>
 
 						<TouchableOpacity style={styles.iconContainer} onPress={onCommentPress}>
-							<FontAwesome name={'commenting'} size={25} color={isCommented ? 'cyan' : 'white'} />
+							<FontAwesome name={'commenting'} size={25} color={isCommented ? 'white' : 'white'} />
 							<Text style={styles.statsLabel}>{post.comments}</Text>
 						</TouchableOpacity>
 

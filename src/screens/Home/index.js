@@ -13,8 +13,8 @@ const Home = ({route, navigation}) => {
 	const [posts,setPosts] = useState([])
 	useEffect(()=>{
 		async function getData(){
-			console.log('home effect executed!!!',`${SERVER_ADDRESS}/front-end/home/${route.params.videoId}`)
-			let result = await axios.get(`${SERVER_ADDRESS}/front-end/home/${route.params.videoId}`)
+			console.log('home effect executed!!!',`${SERVER_ADDRESS}/front-end/home/1`)
+			let result = await axios.get(`${SERVER_ADDRESS}/front-end/home/1`)
 			console.log('home result is ',result['data'])
 			setPosts([result['data']])
 
@@ -26,7 +26,7 @@ const Home = ({route, navigation}) => {
 	return (
 		<View>
 			<FlatList
-				data={posts}
+				data={posts1}
 				renderItem={({item}) => <Post post={item}/>}
 				showsVerticalScrollIndicator={false}
 				snapToInterval={Dimensions.get('window').height - 72 } // scale the image according to screen height
