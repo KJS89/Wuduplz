@@ -101,7 +101,7 @@ export default class MainPage extends Component {
                         <View style={{width:120,marginLeft:232,marginTop:5}}>
                             <Button
                                 onPress={() => navigation.navigate('Profile')}
-                                title="Shoot Video"
+                                title="Watch Video"
                                 color="dodgerblue"
                             />
                         </View>  
@@ -134,7 +134,7 @@ export default class MainPage extends Component {
                         <View style={{width:120,marginLeft:224,marginTop:5}}>
                             <Button
                                 onPress={() => navigation.navigate('Profile')}
-                                title="Shoot Video"
+                                title="Watch Video"
                                 color="dodgerblue"
                             />
                         </View>  
