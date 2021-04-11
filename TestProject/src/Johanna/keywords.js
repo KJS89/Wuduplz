@@ -30,8 +30,8 @@ const AddRequest = ({ navigation }) => {
             <Text onPress={() => navigation.navigate('Profile')}>SKIP       </Text>
         </View>
         <View>
-		    <Text style={{fontSize:25,color:'#000080'}}>    Are there other keywords?</Text>
-            <Text style={{fontSize:15}}>         Please write down the other 7 keywords.</Text>
+		    <Text style={{fontSize:25,color:'#000080'}}>    Please write down the other 7 keywords.</Text>
+            <Text style={{fontSize:15}}>        to push you videos that are more suitable for you.</Text>
         </View>
         
         <View>
