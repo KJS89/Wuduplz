@@ -1,1 +1,0 @@
-export const SERVER_ADDRESS='http://35.203.100.209:8080';
