@@ -40,15 +40,25 @@ class loginView extends Component {
         <TextInput style={styles.subTextinStyle} placeholder={'Keyword 1'} underlineColorAndroid={'transparent'} keyboardType={'numeric'} />
         <TextInput style={styles.subTextinStyle} placeholder={'Keyword 2'} underlineColorAndroid={'transparent'} keyboardType={'numeric'} />
         <TextInput style={styles.subTextinStyle} placeholder={'Keyword 3'} underlineColorAndroid={'transparent'} keyboardType={'numeric'} />
+        <TextInput style={styles.subTextinStyle} placeholder={'Keyword 4'} underlineColorAndroid={'transparent'} keyboardType={'numeric'} />
+        <TextInput style={styles.subTextinStyle} placeholder={'Keyword 5'} underlineColorAndroid={'transparent'} keyboardType={'numeric'} />
+        </View>
+        <Text>  </Text>
+        <View style={{flexDirection:'row', alignItems:'baseline',}}> 
+        <TextInput style={styles.subTextinStyle} placeholder={'Keyword 6'} underlineColorAndroid={'transparent'} keyboardType={'numeric'} />
+        <TextInput style={styles.subTextinStyle} placeholder={'Keyword 7'} underlineColorAndroid={'transparent'} keyboardType={'numeric'} />
+        <TextInput style={styles.subTextinStyle} placeholder={'Keyword 8'} underlineColorAndroid={'transparent'} keyboardType={'numeric'} />
+        <TextInput style={styles.subTextinStyle} placeholder={'Keyword 9'} underlineColorAndroid={'transparent'} keyboardType={'numeric'} />
+        <TextInput style={styles.subTextinStyle} placeholder={'Keyword 10'} underlineColorAndroid={'transparent'} keyboardType={'numeric'} />
         </View>
 
 
         <Text>  </Text>
         <View style={{flexDirection:'row', alignItems:'baseline',}}> 
         <Text style={styles.textstyle}> Location: </Text>
-        <TextInput style={styles.subTextinStyle} placeholder={'City'} underlineColorAndroid={'transparent'} keyboardType={'numeric'} />
-        <TextInput style={styles.subTextinStyle} placeholder={'Province'} underlineColorAndroid={'transparent'} keyboardType={'numeric'} />
-        <TextInput style={styles.subTextinStyle} placeholder={'Country'} underlineColorAndroid={'transparent'} keyboardType={'numeric'} />
+        <TextInput style={styles.locationText} placeholder={'City'} underlineColorAndroid={'transparent'} keyboardType={'numeric'} />
+        <TextInput style={styles.locationText} placeholder={'Province'} underlineColorAndroid={'transparent'} keyboardType={'numeric'} />
+        <TextInput style={styles.locationText} placeholder={'Country'} underlineColorAndroid={'transparent'} keyboardType={'numeric'} />
         </View>
 
         <Text>  </Text>
@@ -89,7 +99,7 @@ const styles = StyleSheet.create({
     marginBottom:30,
   },
   textstyle:{
-    fontSize: 20,
+    fontSize: 15,
     color:'white',
   },
 
@@ -100,6 +110,12 @@ const styles = StyleSheet.create({
     backgroundColor:'#fff',
   },
   subTextinStyle: {
+    width: '12%',
+    height:35,
+    marginLeft:15,
+    backgroundColor:'#fff',
+  },
+  locationText:{
     width: '20%',
     height:35,
     marginLeft:15,

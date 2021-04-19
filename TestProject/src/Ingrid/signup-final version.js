@@ -38,11 +38,11 @@ const AddRequest = ({ navigation }) => {
       /> 
     
 
-    <Text style={styles.step}> User Name </Text>
+    <Text style={styles.step}> Nick Name </Text>
       <TextInput
         style={{ height: 30, borderColor: 'blue', borderWidth: 1, margin: 10, width: Dimensions.get('window').width - 30 }}
         onChangeText={text => onChangeText(text)}
-        placeholder={'User name'}
+        placeholder={'Nick Name'}
         value={value}
       /> 
 
