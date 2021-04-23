@@ -24,7 +24,7 @@ const RootNavigation = () => {
 		<NavigationContainer>
 			<Stack.Navigator screenOptions={{
 				headerShown: false,
-			}} initialRouteName={'Login'}>
+			}} initialRouteName={'Root'}>
 				<Stack.Screen name="Root" component={BottomTabNavigator} />
 				<Stack.Screen name="Record" component={Record} />
 				<Stack.Screen name="Login" component={LoginView} />

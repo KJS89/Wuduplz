@@ -16,8 +16,8 @@ const RequestsForYou = ({route, navigation}) => {
         },
         {
             id: 2,
-            img: 'https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcQ4M9yEyd8PPmRAIUdTuFO0yqYJyTFHSOVorA&usqp=CAU',
-            requestMessage: 'how to cook eggs under 20 seconds',
+            img: 'https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcSxYtr8Rv-vu483lQnee4bsEVk_68oyjULi-w&usqp=CAU',
+            requestMessage: 'Show me your favourite pet!',
             responsesCount: '1 user has responded!',
             username: 'robert',
             hidden: false,
@@ -26,17 +26,15 @@ const RequestsForYou = ({route, navigation}) => {
         },
         {
             id: 3,
-            img: 'https://t1.ea.ltmcdn.com/en/images/1/7/1/20_white_cat_breeds_full_list_3171_orig.jpg',
-            requestMessage: 'Record your white cat',
+            img: 'https://www.pitblado.com/wp-content/uploads/2020/09/giesbrecht_robert-2048.jpg',
+            requestMessage: 'What PC setup do you have?',
             responsesCount: '10 users have responded!',
-            username: 'cassidy',
+            username: 'TheComputerGeek',
             hidden: false,
-
-
         },
         {
             id: 4,
-            img: 'https://www.tekportal.net/wp-content/uploads/2019/02/bench-press-8371.jpg',
+            img: 'https://poli.cms.arts.ubc.ca/wp-content/uploads/sites/31/2020/10/cropped-Robert-F-Photo-for-website-portrait-1-1.jpg',
             requestMessage: 'Take a video of your bench press',
             responsesCount: '3 users have responded!',
             username: 'caesar',
@@ -129,19 +127,27 @@ const RequestsForYou = ({route, navigation}) => {
                             width: '75%',
                             paddingLeft: 5,
                         }}>
-                            <Text style={{}}>@{request.username}</Text>
-                            <Text style={{ paddingLeft: 5, fontWeight: 'bold' }}>{request.requestMessage}</Text>
+                            <View style={{marginLeft: 0, paddingTop: 10, flex: 1, flexDirection: 'row', alignItems: 'center', width: '60%'}}>
+                                <Image
+                                    style={{borderColor: '#EEE', borderRadius: 25, width: 46, height: 46}}
+                                    source={{uri: request.img}}
+                                />
+                                <Text style={{marginTop: 25, fontWeight: 'bold', marginLeft: 5}}>@{request.username}</Text>
+
+                            </View>
+                            <Text style={{ paddingLeft: 6 }}>{request.requestMessage}</Text>
                             {/*<Text style={{ color: '#333' }}>{request.responsesCount}</Text>*/}
                         </View>
                         <View style={{
-                            width: '19%',
+                            width: '20%',
                             display: 'flex',
                             flexDirection: 'row',
                             alignItems: 'center',
+                            marginRight: 12,
                             justifyContent: 'space-between',
                         }}>
                             <TouchableOpacity style={{
-                            }} onPress={() => {navigation.push("Record")}} >
+                            }} onPress={() => {navigation.navigate("Record")}} >
                                 <FontAwesome5 name={'video'} size={25} color="pink" />
                             </TouchableOpacity>
                             <TouchableOpacity style={{

@@ -11,74 +11,150 @@ const Requests = ({route, navigation}) => {
 	const [requests, setRequest] = useState([
 		{
 			id: 1,
-			img: 'https://s4.gifyu.com/images/52wf2h.gif',
-			requestMessage: 'Record your white cat',
-			responsesCount: '10 users have responded!',
+			img: require('../../../data/fruits/111cutstrawberries.gif'),
+			requestMessage: 'Show me how you cut fruits',
+			responsesCount: '4 users have responded!',
 			hidden: false,
+			posts: [
+				{
+					id: '1',
+					videoUri: require('../../../data/fruits/111cutstrawberries.mp4'),
+					user: {
+						id: 'u1',
+						username: '@chefHobbyist',
+						imageUri: 'https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcTTYT_cEyR5jKdn59JPSPRUKGtpLLeVuglC4A&usqp=CAU',
+					},
+					description: 'Cutting strawberries like a pro',
+					requestedBy: 'jamisonjeffrey',
+					likes: 11,
+					comments: 4,
+					shares: 31,
+					private: true,
+					requestId: 1,
+					gifImage: require('../../../data/fruits/111cutstrawberries.gif')
+				},
+				{
+					id: '2',
+					videoUri: require('../../../data/fruits/109cutlime.mp4'),
+					user: {
+						id: 'u1',
+						username: '@cutlimeexpert',
+						imageUri: 'https://img.i-scmp.com/cdn-cgi/image/fit=contain,width=425,format=auto/sites/default/files/styles/768x768/public/images/methode/2018/11/09/4189f666-e0cb-11e8-829d-1199cf0acfc4_1280x720_104300.JPG?itok=KRkKPHhD',
+					},
+					description: 'Cutting limes like a pro',
+					requestedBy: 'foodLover',
+					likes: 43,
+					comments: 3,
+					shares: 21,
+					private: true,
+					requestId: 1,
+					gifImage: require('../../../data/fruits/109cutlime.gif')
 
+				},
+				{
+					id: '3',
+					videoUri: require('../../../data/fruits/110cutpear.mp4'),
+					user: {
+						id: 'u1',
+						username: '@cutlimeexpert',
+						imageUri: 'https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcQdjUjM7JudkhxEvQ4qLf1CG31-7cvhDSMArg&usqp=CAU',
+					},
+					description: 'Cutting pears like a pro',
+					requestedBy: 'justyna',
+					likes: 23,
+					comments: 3,
+					shares: 31,
+					private: false,
+					requestId: 1,
+					gifImage: require('../../../data/fruits/110cutpear.gif')
+
+				},
+				{
+					id: '4',
+					videoUri: require('../../../data/fruits/108cutgrapefruit.mp4'),
+					user: {
+						id: 'u1',
+						username: '@cutgrapeexpert',
+						imageUri: 'https://assets3.thrillist.com/v1/image/832785/1000x666.6666666666666/flatten;crop;jpeg_quality=70',
+					},
+					description: 'Cutting grapefruits for you',
+					requestedBy: 'johncena',
+					likes: 144,
+					comments: 4,
+					shares: 31,
+					private: false,
+					requestId: 1,
+					gifImage: require('../../../data/fruits/108cutgrapefruit.gif')
+				},
+			]
 		},
 		{
 			id: 2,
-			img: 'https://www.tekportal.net/wp-content/uploads/2019/02/bench-press-8371.jpg',
-			requestMessage: 'Take a video of your bench press',
-			responsesCount: '3 users have responded!',
+			img: require('../../../data/basketball/137manspinbasketb.gif'),
+			requestMessage: 'How to spin a basketball',
+			responsesCount: '1 users has responded!',
 			hidden: false,
-
+			posts: [                        {
+				id: '8',
+				videoUri: require('../../../data/basketball/137manspinbasketb.mp4'),
+				user: {
+					id: 'u1',
+					username: '@mrspin',
+					imageUri: 'https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcQ8fiG7mazKTfIruTehelV_rm79xY6bSXVR8Q&usqp=CAU',
+				},
+				description: 'How to spin a basket',
+				requestedBy: 'vincecarter',
+				likes: 343,
+				comments: 9,
+				shares: 1410,
+				private: true,
+				requestId: 1,
+				gifImage: require('../../../data/basketball/137manspinbasketb.gif')
+			},]
 		},
 		{
 			id: 3,
-			img: 'https://upload.wikimedia.org/wikipedia/commons/thumb/4/47/New_york_times_square-terabass.jpg/300px-New_york_times_square-terabass.jpg',
-			requestMessage: 'Show me new york city mainstreet',
-			responsesCount: '4 users have responded!',
-			hidden: false,
-
-		},
-		{
-			id: 4,
-			img: 'https://ncc-website-2.s3.amazonaws.com/images/gatineauparkplan.jpg?mtime=20190207184314&focal=none',
-			requestMessage: 'Gatineau park hills',
+			img: require('../../../data/boxing/126womanjumprope.gif'),
+			requestMessage: 'How to jump rope',
 			responsesCount: '1 user has responded!',
 			hidden: false,
+			posts: []
 
 		},
 		{
 			id: 5,
-			img: 'https://static.wikia.nocookie.net/progressivepartyofnoobs/images/0/07/NA_icon_292x225-584x450.jpg/revision/latest?cb=20180204041337',
+			img: require('../../../data/n-a.png'),
 			requestMessage: 'a cute baby',
-			responsesCount: 'No response so far...',
+			responsesCount: 'No responses so far...',
 			hidden: false,
+			posts: []
 
 		},
 		{
 			id: 6,
-			img: 'https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcQ4M9yEyd8PPmRAIUdTuFO0yqYJyTFHSOVorA&usqp=CAU',
-			requestMessage: 'how to cook eggs under 20 seconds',
-			responsesCount: '1 user has responded!',
+			img: require('../../../data/pottery/162pottery.gif'),
+			requestMessage: 'Making a clay pottery pot',
+			responsesCount: '2 users have responded!',
 			hidden: false,
+			posts: []
 
 		},
 		{
 			id: 7,
-			img: 'https://t1.ea.ltmcdn.com/en/images/1/7/1/20_white_cat_breeds_full_list_3171_orig.jpg',
-			requestMessage: 'Record your white cat',
-			responsesCount: '10 users have responded!',
+			img: require('../../../data/hockey/143goalie.gif'),
+			requestMessage: 'Defend the net in hockey',
+			responsesCount: '2 users have responded!',
 			hidden: false,
+			posts: []
 
 		},
 		{
 			id: 8,
-			img: 'https://www.tekportal.net/wp-content/uploads/2019/02/bench-press-8371.jpg',
-			requestMessage: 'Take a video of your bench press',
-			responsesCount: '3 users have responded!',
+			img: require('../../../data/boxing/145womanbox.gif'),
+			requestMessage: 'Hitting the bag',
+			responsesCount: '2 users have responded!',
 			hidden: false,
-
-		},
-		{
-			id: 9,
-			img: 'https://upload.wikimedia.org/wikipedia/commons/thumb/4/47/New_york_times_square-terabass.jpg/300px-New_york_times_square-terabass.jpg',
-			requestMessage: 'Show me new york city mainstreet',
-			responsesCount: '4 users have responded!',
-			hidden: false,
+			posts: []
 
 		},
 	]);
@@ -118,11 +194,11 @@ const Requests = ({route, navigation}) => {
 								//borderRadius: 50,
 								borderColor: '#333',
 							}}
-							source={{ uri: request.img }} />
+							source={request.img} />
 						<View style={{
 							width: '50%'
 						}}>
-							<TouchableOpacity onPress={() => {navigation.navigate("Responses", {'id': 1})}} key={key}>
+							<TouchableOpacity onPress={() => {navigation.navigate("Responses", {"respondText": request.requestMessage,"posts": request.posts})}} key={key}>
 								<Text style={{ fontWeight: 'bold' }}>{request.requestMessage}</Text>
 								<Text style={{ color: '#333' }}>{request.responsesCount}</Text>
 							</TouchableOpacity>

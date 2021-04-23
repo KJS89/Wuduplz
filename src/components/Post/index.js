@@ -28,7 +28,7 @@ const Post = (props) => {
 	const [comment,setComment]= useState([]);
 	const [text,setText] = useState('')
 	// state used to represent the pause/play feature
-	const [paused, setPaused] = useState(true);
+	const [paused, setPaused] = useState(false);
 	const onPlayPausePress = () => {
 		setPaused(!paused);
 	};
@@ -37,7 +37,7 @@ const Post = (props) => {
 	const [post, setPost] = useState(props.post);
 	// data of the post
 	useEffect(() => {
-		console.log(props.post)
+		//console.log(props.post)
 		setPost({
 			...props.post
 		})
@@ -70,7 +70,7 @@ const Post = (props) => {
 	// data to represent the comment state
 	const [isCommented, setIsCommented] = useState(false);
 	const onCommentPress = async() => {
-		const commentsToAdd = isCommented ? -1 : 1;
+		const commentsToAdd = /*isCommented ? -1 : 1;*/ 0;
 		setPost({
 			...post,
 			comments: post.comments + commentsToAdd
@@ -135,10 +135,10 @@ const Post = (props) => {
 							<View style={{flex: 1, backgroundColor: '#FFF'}}>
 								<ScrollView
 								>
-									<Comment username={'daviddobrik'} content={'nice video'} />
-									<Comment username={'stevenseagull'} content={'meh i could lift more'}/>
-									<Comment username={'bradpitt'} content={'its alright but bad music'}/>
-									<Comment username={'johnatthan'} content={'this is not what i asked for !'}/>
+									<Comment image={'https://randomuser.me/api/portraits/women/1.jpg'} username={'daviddobrik'} content={'nice video'} />
+									<Comment image={'https://randomuser.me/api/portraits/women/21.jpg'} username={'stevenseagull'} content={'meh i could lift more'}/>
+									<Comment image={'https://randomuser.me/api/portraits/men/8.jpg'} username={'bradpitt'} content={'its alright but bad music'}/>
+									<Comment image={'https://randomuser.me/api/portraits/men/11.jpg'} username={'johnatthan'} content={'this is not what i asked for !'}/>
 								</ScrollView>
 
 								{/*keyboard input start*/}
@@ -159,22 +159,18 @@ const Post = (props) => {
 							<View style={{flex: 1, backgroundColor: '#FFF'}}>
 								<ScrollView
 								>
-									<Like username={'johnatthan'} content={'this is not what i asked for !'}/>
-									<Like username={'steve'} content={'this is not what i asked for !'}/>
-									<Like username={'xing'} content={'this is not what i asked for !'}/>
-									<Like username={'john'} content={'this is not what i asked for !'}/>
-									<Like username={'johnatthan'} content={'this is not what i asked for !'}/>
-									<Like username={'steve'} content={'this is not what i asked for !'}/>
-									<Like username={'xing'} content={'this is not what i asked for !'}/>
-									<Like username={'john'} content={'this is not what i asked for !'}/>
-									<Like username={'johnatthan'} content={'this is not what i asked for !'}/>
-									<Like username={'steve'} content={'this is not what i asked for !'}/>
-									<Like username={'xing'} content={'this is not what i asked for !'}/>
-									<Like username={'john'} content={'this is not what i asked for !'}/>
-									<Like username={'johnatthan'} content={'this is not what i asked for !'}/>
-									<Like username={'steve'} content={'this is not what i asked for !'}/>
-									<Like username={'xing'} content={'this is not what i asked for !'}/>
-									<Like username={'john'} content={'this is not what i asked for !'}/>
+									<Like image={'https://randomuser.me/api/portraits/women/15.jpg'} username={'johnatthan'} content={'this is not what i asked for !'}/>
+									<Like image={'https://randomuser.me/api/portraits/women/14.jpg'} username={'steve'} content={'this is not what i asked for !'}/>
+									<Like image={'https://randomuser.me/api/portraits/men/40.jpg'} username={'robert'} content={'this is not what i asked for !'}/>
+									<Like image={'https://randomuser.me/api/portraits/men/68.jpg'} username={'john'} content={'this is not what i asked for !'}/>
+									<Like image={'https://randomuser.me/api/portraits/men/53.jpg'} username={'johnatthan'} content={'this is not what i asked for !'}/>
+									<Like image={'https://randomuser.me/api/portraits/lego/3.jpg'} username={'steve'} content={'this is not what i asked for !'}/>
+									<Like image={'https://randomuser.me/api/portraits/women/80.jpg'} username={'casper'} content={'this is not what i asked for !'}/>
+									<Like image={'https://randomuser.me/api/portraits/women/65.jpg'} username={'john'} content={'this is not what i asked for !'}/>
+									<Like image={'https://randomuser.me/api/portraits/men/69.jpg'} username={'lucian'} content={'this is not what i asked for !'}/>
+									<Like image={'https://randomuser.me/api/portraits/men/29.jpg'} username={'steve'} content={'this is not what i asked for !'}/>
+									<Like image={'https://randomuser.me/api/portraits/women/90.jpg'} username={'jules'} content={'this is not what i asked for !'}/>
+									<Like image={'https://randomuser.me/api/portraits/women/40.jpg'} username={'john'} content={'this is not what i asked for !'}/>
 								</ScrollView>
 
 								{/*keyboard input start*/}
@@ -198,7 +194,7 @@ const Post = (props) => {
 						left:'43%'
 					}} name={'play'} size={75} color="white" />}
 					<Video
-						source={{uri:post.videoUri}}
+						source={post.videoUri}
 						style = {styles.video}
 						onError={(e) => console.log("from video: ", e)}
 						resizeMode={'cover'}
@@ -221,7 +217,7 @@ const Post = (props) => {
 						</TouchableOpacity>
 
 						<TouchableOpacity style={styles.iconContainer} onPress={onCommentPress}>
-							<FontAwesome name={'commenting'} size={25} color={isCommented ? 'white' : 'white'} />
+							<FontAwesome name={'commenting'} size={25} color={isCommented ? 'white' : 'lightblue'} />
 							<Text style={styles.statsLabel}>{post.comments}</Text>
 						</TouchableOpacity>
 
@@ -231,7 +227,7 @@ const Post = (props) => {
 						</TouchableOpacity>
 
 						<TouchableOpacity style={styles.iconContainer}>
-							<Fontisto name={post.private ? 'download' : 'locked' } size={25} color={post.private ? 'white' : 'pink'} />
+							<Fontisto name={post.private ? 'download' : 'locked' } size={25} color={post.private ? 'lightyellow' : 'pink'} />
 							<Text style={styles.statsLabel}></Text>
 						</TouchableOpacity>
 

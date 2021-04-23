@@ -66,6 +66,28 @@ class Record extends PureComponent {
 
         // reset progress bar and button
         this.setState({processing: false, progressStatus: 0.01});
+
+        this.props.navigation.navigate("Root", {screen: "Video", params: {
+                "posts": [
+                    {
+                        id: '1',
+                        videoUri: require('../../../data/videos/record-example-dark.mp4'),
+                        user: {
+                            id: 'u1',
+                            username: '@cameraTester',
+                            imageUri: 'https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcRS2Hv0jQHdr9LBvS-QT3gFiw25m_YzttpLyw&usqp=CAU',
+                        },
+                        description: 'Show me your favourite pet!',
+                        requestedBy: 'oleksandr',
+                        likes: 0,
+                        comments: 0,
+                        shares: 1,
+                        private: true,
+                        requestId: 1,
+                    }
+                ]
+            }
+        })
     }
 
     stopRecording() {

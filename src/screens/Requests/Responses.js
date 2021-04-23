@@ -33,15 +33,18 @@ const Responses = ({route, navigation}) => {
             videoId: '1',
             videoDescription: 'my cat has white spots'
         },
+
     ];
+
+    console.log(route.params.posts);
 
     return (
         <Container>
             <ScrollView style={{paddingHorizontal: 10, margin: 5}}>
                 <View style={{marginTop: 15, marginBottom: 5}}>
-                    <Text style={{color: 'black', fontSize: 15, fontWeight: 'bold', marginLeft: 7}}>Responses to "record your white cat"</Text>
+                    <Text style={{color: 'black', fontSize: 15, fontWeight: 'bold', marginLeft: 7}}>Responses to "{route.params.respondText}"</Text>
                 </View>
-                {responses.map((request, key) => (
+                {route.params.posts.map((request, key) => (
                     <TouchableOpacity style={{
                         display: 'flex',
                         flexDirection: 'row',
@@ -50,7 +53,7 @@ const Responses = ({route, navigation}) => {
                         marginVertical: 10,
                         borderBottomWidth: StyleSheet.hairlineWidth,
                         borderBottomColor: '#E5E5E5',
-                    }} onPress={() => {navigation.navigate("Video")}} key={key}>
+                    }} onPress={() => {navigation.navigate("Video", {"posts": [request]})}} key={key}>
                         <Image
                             style={{
                                 width: 66,
@@ -59,12 +62,12 @@ const Responses = ({route, navigation}) => {
                                 borderColor: '#333',
                                 //borderWidth: StyleSheet.hairlineWidth
                             }}
-                            source={{ uri: request.userImage }} />
+                            source={request.gifImage} />
                         <View style={{
                             width: '50%'
                         }}>
-                            <Text style={{ fontWeight: 'bold' }}>{request.username}</Text>
-                            <Text style={{ color: '#333' }}>{request.videoDescription}</Text>
+                            <Text style={{ fontWeight: 'bold' }}>{request.user.username}</Text>
+                            <Text style={{ color: '#333' }}>{request.description}</Text>
                         </View>
                         <View style={{
                             width: '23%',

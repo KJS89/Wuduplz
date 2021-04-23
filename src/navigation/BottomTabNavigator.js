@@ -41,7 +41,24 @@ const BottomTabNavigator = () => {
 						<Entypo name={'video'} size={24} color={color} />
 					)
 				}}
-				initialParams={{itemId: 15, otherParams: 26}}
+				initialParams={{"posts": [
+						{
+							id: '1',
+							videoUri: require('../../data/fruits/111cutstrawberries.mp4'),
+							user: {
+								id: 'u1',
+								username: '@chefHobbyist',
+								imageUri: 'https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcTTYT_cEyR5jKdn59JPSPRUKGtpLLeVuglC4A&usqp=CAU',
+							},
+							description: 'Cutting strawberries like a pro',
+							requestedBy: 'jamisonjeffrey',
+							likes: 11,
+							comments: 4,
+							shares: 31,
+							private: true,
+							requestId: 1,
+						}
+					]}}
 			/>
 			<Tab.Screen
 				name='Explore'
