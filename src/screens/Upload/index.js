@@ -7,14 +7,17 @@ import {
 	Text,
 	TextInput,
 	TouchableOpacity,
-	View
+	View,
+	ActivityIndicator
 } from 'react-native';
+import AntDesign from "react-native-vector-icons/AntDesign";
+import FontAwesome5 from "react-native-vector-icons/FontAwesome5";
 
 export default class Upload extends React.Component {
 	constructor(props) {
 		super(props);
 
-		this.state = { name: '' }
+		this.state = { name: '', submit: false, sentMessage: 'Sending', sendIndicator: true, receivingMessage: 'Receiving', receivingIndicator: true, respondingIndicator: true, respondingMessage: 'Responding' }
 
 		this.handleNameChange = this.handleNameChange.bind(this);
 		this.handleSubmit = this.handleSubmit.bind(this);
@@ -25,10 +28,18 @@ export default class Upload extends React.Component {
 	}
 
 	handleNameChange(name) {
-		this.setState({ name });
+		this.setState({ name: name, submit: false });
 	}
 
 	handleSubmit() {
+		// reset the states
+		this.setState({disabledButton: true, name: '', submit: false, sentMessage: 'Sending', sendIndicator: true, receivingMessage: 'Receiving', receivingIndicator: true, respondingIndicator: true, respondingMessage: 'Responding'});
+		// start the process
+		this.setState({name: '', submit: true});
+		setTimeout(() => {this.setState({sentMessage: 'Sent', sendIndicator: false}) }, 2000);
+		setTimeout( () => {this.setState({receivingMessage: 'Received by 4', receivingIndicator: false})}, 5000)
+		setTimeout( () => {this.setState({respondingMessage: 'Responded by 3', respondingIndicator: false})}, 9000)
+
 	}
 
 	render() {
@@ -55,10 +66,44 @@ export default class Upload extends React.Component {
 					</View>
 					<View style={styles.inputContainer}>
 						<TouchableOpacity
-							style={styles.saveButton}
+							style={{...styles.saveButton}}
 							onPress={this.handleSubmit}
 						>
 							<Text style={styles.saveButtonText}>Create Request</Text>
+						</TouchableOpacity>
+					</View>
+					<View style={styles.inputContainer}>
+						<TouchableOpacity
+						>
+							<View style={{flexDirection: 'row', justifyContent: 'center', display: this.state.submit ? 'flex' : 'none'}}>
+
+								{this.state.sendIndicator ? <ActivityIndicator size="small" color="green" /> : <AntDesign style={{marginTop: 2, marginRight: 3}} name={'checkcircleo'} size={15} color={'green'} />}
+								<Text style={{
+									fontSize: 13,
+									textAlign: 'center',
+									marginRight: 5
+								}}>{this.state.sentMessage}</Text>
+
+								{this.state.sentMessage !== 'Sending' && <View style={{flexDirection: 'row', justifyContent: 'center'}}>
+									{this.state.receivingIndicator ? <ActivityIndicator size="small" color="blue" /> : <AntDesign style={{marginTop: 2, marginRight: 3}} name={'checkcircleo'} size={15} color={'blue'} />}
+									<Text style={{
+										fontSize: 13,
+										textAlign: 'center',
+										marginRight: 5
+									}}>{this.state.receivingMessage}</Text>
+								</View>}
+
+								{this.state.receivingMessage !== 'Receiving' && <View style={{flexDirection: 'row', justifyContent: 'center'}}>
+									{this.state.respondingIndicator ? <ActivityIndicator size="small" color="purple" /> : <AntDesign style={{marginTop: 2, marginRight: 3}} name={'checkcircleo'} size={15} color={'purple'} />}
+									<Text style={{
+										fontSize: 13,
+										textAlign: 'center',
+										marginRight: 5
+									}}>{this.state.respondingMessage}</Text>
+								</View>}
+
+
+							</View>
 						</TouchableOpacity>
 					</View>
 				</ScrollView>
