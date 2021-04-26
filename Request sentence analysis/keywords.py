@@ -86,7 +86,9 @@ def stopWordDel(w):
             if line.strip("\n") != w:
                 f.write(line)
 
-
+''' 
+    The main function. Input the string of the request sentence return the list of keywords
+'''
         
 def keyWord(s):
     keyword = []
